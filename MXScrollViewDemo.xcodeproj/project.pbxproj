@@ -15,6 +15,18 @@
 		15E5617C1C7CA44E00195642 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15E5617A1C7CA44E00195642 /* LaunchScreen.storyboard */; };
 		15E561871C7CA44F00195642 /* MXScrollViewDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E561861C7CA44F00195642 /* MXScrollViewDemoTests.m */; };
 		15E561921C7CA44F00195642 /* MXScrollViewDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E561911C7CA44F00195642 /* MXScrollViewDemoUITests.m */; };
+		15E561A41C7CA63300195642 /* picture_one.png in Resources */ = {isa = PBXBuildFile; fileRef = 15E561A11C7CA63300195642 /* picture_one.png */; };
+		15E561A51C7CA63300195642 /* picture_three.png in Resources */ = {isa = PBXBuildFile; fileRef = 15E561A21C7CA63300195642 /* picture_three.png */; };
+		15E561A61C7CA63300195642 /* picture_two.png in Resources */ = {isa = PBXBuildFile; fileRef = 15E561A31C7CA63300195642 /* picture_two.png */; };
+		15E561A91C7CA64200195642 /* demo1GIF.gif in Resources */ = {isa = PBXBuildFile; fileRef = 15E561A71C7CA64200195642 /* demo1GIF.gif */; };
+		15E561AA1C7CA64200195642 /* demo2GIF.gif in Resources */ = {isa = PBXBuildFile; fileRef = 15E561A81C7CA64200195642 /* demo2GIF.gif */; };
+		15E561AD1C7CA68200195642 /* MXScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E561AC1C7CA68200195642 /* MXScrollView.m */; };
+		15E561B01C7CA6A700195642 /* MXScrollConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E561AF1C7CA6A700195642 /* MXScrollConst.m */; };
+		15E561B31C7CA6DC00195642 /* MXScrollView+Animotion.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E561B21C7CA6DC00195642 /* MXScrollView+Animotion.m */; };
+		15E561B61C7CA6F400195642 /* UIImageView+LoadImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E561B51C7CA6F400195642 /* UIImageView+LoadImage.m */; };
+		15E561BB1C7CA86900195642 /* NormalScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E561B81C7CA86900195642 /* NormalScrollViewController.m */; };
+		15E561BC1C7CA86900195642 /* TableScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E561BA1C7CA86900195642 /* TableScrollViewController.m */; };
+		15E561BF1C7CA9D200195642 /* placeholderPicture.png in Resources */ = {isa = PBXBuildFile; fileRef = 15E561BE1C7CA9D200195642 /* placeholderPicture.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +63,24 @@
 		15E5618D1C7CA44F00195642 /* MXScrollViewDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MXScrollViewDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		15E561911C7CA44F00195642 /* MXScrollViewDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MXScrollViewDemoUITests.m; sourceTree = "<group>"; };
 		15E561931C7CA44F00195642 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		15E561A11C7CA63300195642 /* picture_one.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = picture_one.png; sourceTree = "<group>"; };
+		15E561A21C7CA63300195642 /* picture_three.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = picture_three.png; sourceTree = "<group>"; };
+		15E561A31C7CA63300195642 /* picture_two.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = picture_two.png; sourceTree = "<group>"; };
+		15E561A71C7CA64200195642 /* demo1GIF.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = demo1GIF.gif; sourceTree = "<group>"; };
+		15E561A81C7CA64200195642 /* demo2GIF.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = demo2GIF.gif; sourceTree = "<group>"; };
+		15E561AB1C7CA68200195642 /* MXScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXScrollView.h; sourceTree = "<group>"; };
+		15E561AC1C7CA68200195642 /* MXScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXScrollView.m; sourceTree = "<group>"; };
+		15E561AE1C7CA6A700195642 /* MXScrollConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXScrollConst.h; sourceTree = "<group>"; };
+		15E561AF1C7CA6A700195642 /* MXScrollConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXScrollConst.m; sourceTree = "<group>"; };
+		15E561B11C7CA6DC00195642 /* MXScrollView+Animotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MXScrollView+Animotion.h"; sourceTree = "<group>"; };
+		15E561B21C7CA6DC00195642 /* MXScrollView+Animotion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MXScrollView+Animotion.m"; sourceTree = "<group>"; };
+		15E561B41C7CA6F400195642 /* UIImageView+LoadImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+LoadImage.h"; sourceTree = "<group>"; };
+		15E561B51C7CA6F400195642 /* UIImageView+LoadImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+LoadImage.m"; sourceTree = "<group>"; };
+		15E561B71C7CA86900195642 /* NormalScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NormalScrollViewController.h; sourceTree = "<group>"; };
+		15E561B81C7CA86900195642 /* NormalScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NormalScrollViewController.m; sourceTree = "<group>"; };
+		15E561B91C7CA86900195642 /* TableScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableScrollViewController.h; sourceTree = "<group>"; };
+		15E561BA1C7CA86900195642 /* TableScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableScrollViewController.m; sourceTree = "<group>"; };
+		15E561BE1C7CA9D200195642 /* placeholderPicture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholderPicture.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +111,8 @@
 		15E561601C7CA44E00195642 = {
 			isa = PBXGroup;
 			children = (
+				15E561A01C7CA61D00195642 /* Pictures */,
+				15E5619F1C7CA60800195642 /* MXScrollView */,
 				15E5616B1C7CA44E00195642 /* MXScrollViewDemo */,
 				15E561851C7CA44F00195642 /* MXScrollViewDemoTests */,
 				15E561901C7CA44F00195642 /* MXScrollViewDemoUITests */,
@@ -105,6 +137,10 @@
 				15E561701C7CA44E00195642 /* AppDelegate.m */,
 				15E561721C7CA44E00195642 /* ViewController.h */,
 				15E561731C7CA44E00195642 /* ViewController.m */,
+				15E561B71C7CA86900195642 /* NormalScrollViewController.h */,
+				15E561B81C7CA86900195642 /* NormalScrollViewController.m */,
+				15E561B91C7CA86900195642 /* TableScrollViewController.h */,
+				15E561BA1C7CA86900195642 /* TableScrollViewController.m */,
 				15E561751C7CA44E00195642 /* Main.storyboard */,
 				15E561781C7CA44E00195642 /* Assets.xcassets */,
 				15E5617A1C7CA44E00195642 /* LaunchScreen.storyboard */,
@@ -138,6 +174,42 @@
 				15E561931C7CA44F00195642 /* Info.plist */,
 			);
 			path = MXScrollViewDemoUITests;
+			sourceTree = "<group>";
+		};
+		15E5619F1C7CA60800195642 /* MXScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				15E561AB1C7CA68200195642 /* MXScrollView.h */,
+				15E561AC1C7CA68200195642 /* MXScrollView.m */,
+				15E561AE1C7CA6A700195642 /* MXScrollConst.h */,
+				15E561AF1C7CA6A700195642 /* MXScrollConst.m */,
+				15E561B11C7CA6DC00195642 /* MXScrollView+Animotion.h */,
+				15E561B21C7CA6DC00195642 /* MXScrollView+Animotion.m */,
+				15E561B41C7CA6F400195642 /* UIImageView+LoadImage.h */,
+				15E561B51C7CA6F400195642 /* UIImageView+LoadImage.m */,
+				15E561BD1C7CA9C500195642 /* resource */,
+			);
+			path = MXScrollView;
+			sourceTree = "<group>";
+		};
+		15E561A01C7CA61D00195642 /* Pictures */ = {
+			isa = PBXGroup;
+			children = (
+				15E561A71C7CA64200195642 /* demo1GIF.gif */,
+				15E561A81C7CA64200195642 /* demo2GIF.gif */,
+				15E561A11C7CA63300195642 /* picture_one.png */,
+				15E561A21C7CA63300195642 /* picture_three.png */,
+				15E561A31C7CA63300195642 /* picture_two.png */,
+			);
+			path = Pictures;
+			sourceTree = "<group>";
+		};
+		15E561BD1C7CA9C500195642 /* resource */ = {
+			isa = PBXGroup;
+			children = (
+				15E561BE1C7CA9D200195642 /* placeholderPicture.png */,
+			);
+			path = resource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,9 +317,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15E561BF1C7CA9D200195642 /* placeholderPicture.png in Resources */,
 				15E5617C1C7CA44E00195642 /* LaunchScreen.storyboard in Resources */,
+				15E561A61C7CA63300195642 /* picture_two.png in Resources */,
 				15E561791C7CA44E00195642 /* Assets.xcassets in Resources */,
 				15E561771C7CA44E00195642 /* Main.storyboard in Resources */,
+				15E561A91C7CA64200195642 /* demo1GIF.gif in Resources */,
+				15E561AA1C7CA64200195642 /* demo2GIF.gif in Resources */,
+				15E561A41C7CA63300195642 /* picture_one.png in Resources */,
+				15E561A51C7CA63300195642 /* picture_three.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,9 +350,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15E561B61C7CA6F400195642 /* UIImageView+LoadImage.m in Sources */,
+				15E561AD1C7CA68200195642 /* MXScrollView.m in Sources */,
 				15E561741C7CA44E00195642 /* ViewController.m in Sources */,
 				15E561711C7CA44E00195642 /* AppDelegate.m in Sources */,
+				15E561B31C7CA6DC00195642 /* MXScrollView+Animotion.m in Sources */,
 				15E5616E1C7CA44E00195642 /* main.m in Sources */,
+				15E561BB1C7CA86900195642 /* NormalScrollViewController.m in Sources */,
+				15E561BC1C7CA86900195642 /* TableScrollViewController.m in Sources */,
+				15E561B01C7CA6A700195642 /* MXScrollConst.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
