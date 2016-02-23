@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
   s.version          = "1.0.0"  
   s.summary          = "The use of a simple with the effects of the rolling cycle view"
   s.description      = <<-DESC  
-                       It is a loopScrollView used on iOS, which implement by Objective-C.  
+                       The use of a simple with the effects of the rolling cycle view.  
                        DESC  
   s.homepage         = "https://github.com/cwxatlm/MXScrollView"  
   # s.screenshots      = "www.example.com/screenshots_1", "www.example.com/screenshots_2"  
