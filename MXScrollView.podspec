@@ -8,6 +8,6 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '6.0'
   s.source       = {:git => 'https://github.com/cwxatlm/MXScrollView.git', :tag => s.version}
   s.source_files = 'MXScrollView/**/*.{h,m}'
-  s.resource     = 'MJRefresh/resource'
+  s.resource     = 'MXScrollView/resource'
   s.requires_arc = true
 end  
