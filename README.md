@@ -50,7 +50,7 @@ scroll.animotionDirection = kCMTransitionDirectionRandom; //支持多方向 supp
 
 ####Objective-C
 ```objective-c
-_scroll = [[CMCyclicScroll alloc] initWithRootTableView:_tableView];
+_scroll = [[MXScrollView alloc] initWithRootTableView:_tableView];
 _scroll.animotionDirection = kCMTransitionDirectionRandom;
 _scroll.animotionType = kCMTransitionRandom;
 _scroll.images = @[
