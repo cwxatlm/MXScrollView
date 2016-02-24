@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		159C2B3C1C7DF3520034292D /* MXScrollView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 159C2B3B1C7DF3520034292D /* MXScrollView.bundle */; };
 		15E5616E1C7CA44E00195642 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E5616D1C7CA44E00195642 /* main.m */; };
 		15E561711C7CA44E00195642 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E561701C7CA44E00195642 /* AppDelegate.m */; };
 		15E561741C7CA44E00195642 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E561731C7CA44E00195642 /* ViewController.m */; };
@@ -26,7 +27,6 @@
 		15E561B61C7CA6F400195642 /* UIImageView+LoadImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E561B51C7CA6F400195642 /* UIImageView+LoadImage.m */; };
 		15E561BB1C7CA86900195642 /* NormalScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E561B81C7CA86900195642 /* NormalScrollViewController.m */; };
 		15E561BC1C7CA86900195642 /* TableScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E561BA1C7CA86900195642 /* TableScrollViewController.m */; };
-		15E561BF1C7CA9D200195642 /* placeholderPicture.png in Resources */ = {isa = PBXBuildFile; fileRef = 15E561BE1C7CA9D200195642 /* placeholderPicture.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		159C2B3B1C7DF3520034292D /* MXScrollView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MXScrollView.bundle; sourceTree = "<group>"; };
 		15E561691C7CA44E00195642 /* MXScrollViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MXScrollViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15E5616D1C7CA44E00195642 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		15E5616F1C7CA44E00195642 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -80,7 +81,6 @@
 		15E561B81C7CA86900195642 /* NormalScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NormalScrollViewController.m; sourceTree = "<group>"; };
 		15E561B91C7CA86900195642 /* TableScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableScrollViewController.h; sourceTree = "<group>"; };
 		15E561BA1C7CA86900195642 /* TableScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableScrollViewController.m; sourceTree = "<group>"; };
-		15E561BE1C7CA9D200195642 /* placeholderPicture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholderPicture.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,7 +187,7 @@
 				15E561B21C7CA6DC00195642 /* MXScrollView+Animotion.m */,
 				15E561B41C7CA6F400195642 /* UIImageView+LoadImage.h */,
 				15E561B51C7CA6F400195642 /* UIImageView+LoadImage.m */,
-				15E561BD1C7CA9C500195642 /* resource */,
+				159C2B3B1C7DF3520034292D /* MXScrollView.bundle */,
 			);
 			path = MXScrollView;
 			sourceTree = "<group>";
@@ -202,14 +202,6 @@
 				15E561A31C7CA63300195642 /* picture_two.png */,
 			);
 			path = Pictures;
-			sourceTree = "<group>";
-		};
-		15E561BD1C7CA9C500195642 /* resource */ = {
-			isa = PBXGroup;
-			children = (
-				15E561BE1C7CA9D200195642 /* placeholderPicture.png */,
-			);
-			path = resource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -317,7 +309,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15E561BF1C7CA9D200195642 /* placeholderPicture.png in Resources */,
+				159C2B3C1C7DF3520034292D /* MXScrollView.bundle in Resources */,
 				15E5617C1C7CA44E00195642 /* LaunchScreen.storyboard in Resources */,
 				15E561A61C7CA63300195642 /* picture_two.png in Resources */,
 				15E561791C7CA44E00195642 /* Assets.xcassets in Resources */,

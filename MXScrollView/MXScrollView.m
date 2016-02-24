@@ -187,7 +187,7 @@
     if ([object isKindOfClass:[UIImage class]]) {
         scrollImage.image = (UIImage *)object;
     } else if ([object isKindOfClass:[NSString class]]){
-        [scrollImage cm_downloadImageWithUrl:[NSURL URLWithString:(NSString *)object] placeholderImage:[UIImage imageNamed:@"placeholderPicture"]];
+        [scrollImage cm_downloadImageWithUrl:[NSURL URLWithString:(NSString *)object] placeholderImage:[UIImage imageNamed:@"MXScrollView.bundle/placeholderPicture"]];
     }
     [self addGestureRecognizerToImageView:scrollImage];
     [imageViews addObject:scrollImage];
