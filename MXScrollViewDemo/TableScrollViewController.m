@@ -44,13 +44,12 @@ static NSString *const CMCyclicScrollIdentifier = @"CMCyclicScrollTableViewCell"
     _scroll = [[MXScrollView alloc] initWithRootTableView:_tableView height:150];
     _scroll.animotionDirection = kCMTransitionDirectionRandom;
     _scroll.animotionType = kCMTransitionRandom;
-    _scroll.images = @[
+    _scroll.images =  @[
                        [UIImage imageNamed:@"picture_one"],
                        [UIImage imageNamed:@"picture_two"],
                        [UIImage imageNamed:@"picture_three"],
                        @"http://pic31.nipic.com/20130624/8821914_104949466000_2.jpg"
                        ];
-    
     [_scroll setTapImageHandle:^(NSInteger index) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:[NSString stringWithFormat:@"你点击了第%ld张图片", index] delegate:nil cancelButtonTitle:nil otherButtonTitles:@"ok", nil];
         [alert show];

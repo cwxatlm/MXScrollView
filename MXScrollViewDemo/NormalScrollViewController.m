@@ -36,10 +36,10 @@ static int   const scrollCount  = 6;
         float y = gap + (gap + scrollHeight) * (i / 2) + kDefaultNavigationBarHeight;
         
         MXScrollView *scroll = [[MXScrollView alloc] initWithFrame:CGRectMake(x, y, scrollWidth, scrollHeight)];
-        scroll.images =  @[
-                           [UIImage imageNamed:@"picture_one"],
-                           [UIImage imageNamed:@"picture_two"],
-                           [UIImage imageNamed:@"picture_three"],
+        scroll.images = @[
+                           @"http://pic1.nipic.com/2008-09-19/200891903253318_2.jpg",
+                           @"http://pic7.nipic.com/20100516/1263764_003945544701_2.jpg",
+                           @"http://pic4.nipic.com/20091117/3376018_110331702620_2.jpg",
                            @"http://pic31.nipic.com/20130624/8821914_104949466000_2.jpg"
                            ];
         scroll.animotionType = kCMTransitionRandom;

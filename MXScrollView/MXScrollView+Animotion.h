@@ -1,10 +1,3 @@
-//
-//  MXScrollView+Animotion.h
-//  MXScrollViewDemo
-//
-//  Created by PRO on 16/2/23.
-//  Copyright © 2016年 PRO. All rights reserved.
-//
 
 #import "MXScrollView.h"
 #import "MXScrollConst.h"

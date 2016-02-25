@@ -18,19 +18,18 @@
 @property (nonatomic, assign) BOOL hasNavigationBar; //是否有导航栏 默认为yes 拉伸模式下顶部无导航栏须设置为NO
 @property (nonatomic, assign) BOOL autoScroll; //自动换页 默认为yes
 
-@property (nonatomic, assign) BOOL showPageIndicator; //是否显示分页视图 默认为yes
-
 @property (nonatomic, assign) BOOL showAnimotion;//是否显示切换动画 默认为yes 为no时为平滑切换效果
+
+@property (nonatomic, assign) float scrollIntervalTime; //滑动间隔 默认3秒
+
+//pageIndicator
+@property (nonatomic, assign) BOOL showPageIndicator; //是否显示分页视图 默认为yes
 
 @property (nonatomic, strong) UIColor *pageIndicatorCurrentColor; //默认为白色
 
 @property (nonatomic, strong) UIColor *pageIndicatorBackColor; //默认为系统浅灰
 
-@property (nonatomic, assign) float scrollIntervalTime; //滑动间隔 默认3秒
-
 //animotion
-@property (nonatomic, strong) CATransition *transition; //滑动特效 默认翻页 你可以自己写一个，也可以使用下面属性更改部分效果
-
 @property (nonatomic, assign) kCMTransitionType animotionType; //动画类型
 
 @property (nonatomic, assign) kCMTransitionDirection animotionDirection;//动画方向

@@ -62,8 +62,8 @@
         self.showAnimotion = YES;
         self.hasNavigationBar = YES;
         self.scrollViewHeight = height;
-        self.scrollViewWidth = _newFrame.size.width == 0 ? SCREEN_WIDTH : _newFrame.size.width;
         self.duringTime = kDefaultScrollTime;
+        self.scrollViewWidth = _newFrame.size.width == 0 ? SCREEN_WIDTH : _newFrame.size.width;
         self.autoresizesSubviews = YES;
         [self initBaseDataWithTableView:tableView];
         [self initTransaction];
@@ -73,9 +73,11 @@
 }
 
 - (void)setImages:(NSArray *)images {
-    self.scrollImages = [NSMutableArray arrayWithObject:[images lastObject]];
-    [self.scrollImages addObjectsFromArray:images];
-    [self.scrollImages addObject:images.firstObject];
+    if (images != nil) {
+        self.scrollImages = [NSMutableArray arrayWithObject:[images lastObject]];
+        [self.scrollImages addObjectsFromArray:images];
+        [self.scrollImages addObject:images.firstObject];
+    }
     [self.scrollImages enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [self initImageWithObject:obj index:idx];
     }];
@@ -107,10 +109,6 @@
 - (void)setScrollIntervalTime:(float)scrollIntervalTime {
     self.duringTime = scrollIntervalTime;
     [self initTimer];
-}
-
-- (void)setTransition:(CATransition *)transition {
-    _animation = transition;
 }
 
 - (void)setAnimotionType:(kCMTransitionType)animotionType {
@@ -167,6 +165,7 @@
 - (void)initBaseDataWithTableView:(UITableView *)tableView {
     self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.scrollViewWidth, self.scrollViewHeight)];
     self.scrollView.pagingEnabled = YES;
+    self.scrollView.bounces = NO;
     self.scrollView.showsHorizontalScrollIndicator = NO;
     self.scrollView.delegate = self;
     self.scrollView.contentMode = !isTabelViewMode ? UIViewContentModeScaleToFill : UIViewContentModeScaleAspectFill;;

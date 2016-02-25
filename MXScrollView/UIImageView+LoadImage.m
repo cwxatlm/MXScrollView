@@ -1,10 +1,3 @@
-//
-//  UIImageView+LoadImage.m
-//  MXScrollViewDemo
-//
-//  Created by PRO on 16/2/23.
-//  Copyright © 2016年 PRO. All rights reserved.
-//
 
 #import "UIImageView+LoadImage.h"
 
@@ -21,7 +14,10 @@
             NSLog(@"error = %@", error.description);
         }
         UIImage *downloadImage = [UIImage imageWithData:data];
-        self.image = downloadImage;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.image = downloadImage;
+        });
+        
     }];
     [task resume];
 }
