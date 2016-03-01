@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|  
   s.name         = 'MXScrollView'
-  s.version      = '1.0.2'
+  s.version      = '1.0.3'
   s.summary      = 'The use of a simple with the effects of the rolling cycle view'
   s.homepage     = 'https://github.com/cwxatlm/MXScrollView'
   s.license      = 'MIT'
