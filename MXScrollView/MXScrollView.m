@@ -7,7 +7,7 @@
 //
 
 #import "MXScrollView.h"
-#import "UIImageView+WebCache.h"
+#import "UIImageView+LoadImage.h"
 #import "MXScrollView+Animotion.h"
 
 @interface MXScrollView () <UIScrollViewDelegate>
@@ -190,7 +190,7 @@
     if ([object isKindOfClass:[UIImage class]]) {
         scrollImage.image = (UIImage *)object;
     } else if ([object isKindOfClass:[NSString class]]){
-        [scrollImage sd_setImageWithURL:[NSURL URLWithString:(NSString *)object] placeholderImage:_placeholderImage];
+        [scrollImage cm_downloadImageWithUrl:[NSURL URLWithString:(NSString *)object] placeholderImage:_placeholderImage];
     }
     [self addGestureRecognizerToImageView:scrollImage];
     [imageViews addObject:scrollImage];

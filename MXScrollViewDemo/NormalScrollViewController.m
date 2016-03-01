@@ -30,7 +30,7 @@ static int   const scrollCount  = 6;
 
 - (void)initBaseLayout {
     
-    float gap = (SCREEN_WIDTH - scrollWidth * 2) / 3.0f;
+    float gap = (CGRectGetWidth([UIScreen mainScreen].bounds) - scrollWidth * 2) / 3.0f;
     for (int i = 0; i < scrollCount; i++) {
         float x = gap + (gap + scrollWidth) * (i % 2);
         float y = gap + (gap + scrollHeight) * (i / 2) + kDefaultNavigationBarHeight;
