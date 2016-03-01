@@ -75,8 +75,9 @@ typedef NS_ENUM(NSInteger, kCMTransitionDirection) {
     kCMTransitionDirectionRandom
 };
 
-#define SCREEN_WIDTH                    [UIScreen mainScreen].bounds.size.width //屏幕宽
-#define DEFAULT_PAGECONTROL_COLOR       [UIColor whiteColor] //默认pageControl当前页数颜色
+#define KSCREEN_WIDTH                    [UIScreen mainScreen].bounds.size.width //屏幕宽
+#define KDEFAULT_PAGECONTROL_COLOR       [UIColor whiteColor] //默认pageControl当前页数颜色
+#define KDEFAULT_PLACEHOLDER_IMAGE       [UIImage imageNamed:@"MXScrollView.bundle/placeholderPicture"] //默认等待视图
 
 extern float const kDefaultScrollViewHeight; //默认滚动视图高度
 extern float const kDefaultPageControlHeight; //pageControl高度

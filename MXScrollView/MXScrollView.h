@@ -22,6 +22,13 @@
 
 @property (nonatomic, assign) float scrollIntervalTime; //滑动间隔 默认3秒
 
+//UIKit
+@property (nonatomic, strong) UIScrollView *scrollView;//滚动视图
+
+@property (nonatomic, strong) UITableView *tableView;//表视图
+
+@property (nonatomic, strong) UIImage *placeholderImage;//预加载视图,须写在设置图片数组之前
+
 //pageIndicator
 @property (nonatomic, assign) BOOL showPageIndicator; //是否显示分页视图 默认为yes
 

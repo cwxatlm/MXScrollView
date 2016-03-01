@@ -7,7 +7,7 @@
 //
 
 #import "MXScrollView.h"
-#import "UIImageView+LoadImage.h"
+#import "UIImageView+WebCache.h"
 #import "MXScrollView+Animotion.h"
 
 @interface MXScrollView () <UIScrollViewDelegate>
@@ -18,8 +18,6 @@
     UIImageView *currentImage;//当前图片
     NSInteger currentPage;//当前页数
 }
-//内部scrollView
-@property (nonatomic, strong) UIScrollView *scrollView;
 //scrollview高度
 @property (nonatomic, assign) CGFloat scrollViewHeight;
 //scrollView宽度
@@ -28,8 +26,6 @@
 @property (nonatomic, assign) float duringTime;
 //实际滚动图片数组
 @property (nonatomic, strong) NSMutableArray *scrollImages;
-//引用滚动视图
-@property (nonatomic, strong) UITableView *tableView;
 //pageControll分页视图
 @property (nonatomic, strong) UIPageControl *pageControl;
 //定时器
@@ -46,7 +42,10 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     _newFrame = frame;
     self = [self initWithRootTableView:nil height:frame.size.height];
-    isTabelViewMode = NO;
+    if (self) {
+        isTabelViewMode = NO;
+        self.scrollViewWidth = _newFrame.size.width;
+    }
     return self;
 }
 
@@ -56,14 +55,15 @@
 }
 
 - (instancetype)initWithRootTableView:(UITableView *)tableView height:(float)height {
-    self = [super initWithFrame:tableView == nil ? _newFrame : CGRectMake(0, -height, SCREEN_WIDTH, height)];
+    self = [super initWithFrame:tableView == nil ? _newFrame : CGRectMake(0, -height, KSCREEN_WIDTH, height)];
     if (self) {
         isTabelViewMode = YES;
         self.showAnimotion = YES;
         self.hasNavigationBar = YES;
         self.scrollViewHeight = height;
         self.duringTime = kDefaultScrollTime;
-        self.scrollViewWidth = _newFrame.size.width == 0 ? SCREEN_WIDTH : _newFrame.size.width;
+        self.scrollViewWidth = KSCREEN_WIDTH;
+        self.placeholderImage = KDEFAULT_PLACEHOLDER_IMAGE;
         self.autoresizesSubviews = YES;
         [self initBaseDataWithTableView:tableView];
         [self initTransaction];
@@ -109,6 +109,10 @@
 - (void)setScrollIntervalTime:(float)scrollIntervalTime {
     self.duringTime = scrollIntervalTime;
     [self initTimer];
+}
+
+- (void)setPlaceholderImage:(UIImage *)placeholderImage {
+    _placeholderImage = placeholderImage;
 }
 
 - (void)setAnimotionType:(kCMTransitionType)animotionType {
@@ -186,7 +190,7 @@
     if ([object isKindOfClass:[UIImage class]]) {
         scrollImage.image = (UIImage *)object;
     } else if ([object isKindOfClass:[NSString class]]){
-        [scrollImage cm_downloadImageWithUrl:[NSURL URLWithString:(NSString *)object] placeholderImage:[UIImage imageNamed:@"MXScrollView.bundle/placeholderPicture"]];
+        [scrollImage sd_setImageWithURL:[NSURL URLWithString:(NSString *)object] placeholderImage:_placeholderImage];
     }
     [self addGestureRecognizerToImageView:scrollImage];
     [imageViews addObject:scrollImage];
@@ -197,7 +201,7 @@
     self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, self.frame.size.height - kDefaultPageControlHeight, self.scrollViewWidth, kDefaultPageControlHeight)];
     self.pageControl.numberOfPages = self.scrollImages.count - 2;
     self.pageControl.userInteractionEnabled = NO;
-    self.pageControl.currentPageIndicatorTintColor = DEFAULT_PAGECONTROL_COLOR;
+    self.pageControl.currentPageIndicatorTintColor = KDEFAULT_PAGECONTROL_COLOR;
     self.pageControl.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     [self addSubview:self.pageControl];
 }
