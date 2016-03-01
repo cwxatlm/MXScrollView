@@ -9,9 +9,9 @@ The use of a simple with the effects of the rolling cycle view
 ![demo](Pictures/demo1GIF.gif)
 ![demo](Pictures/demo2GIF.gif)
 
-版本1.0.3 
+版本1.0.4 
 ----
-  在一位朋友的建议下,为了有更好的图片加载体验,使用SDWebImage框架处理网络图片,暴露tableView及scrollView到.h文件,同时支持自定义预加载视图(须在传入图片数组之前设置),谢谢提出建议的这位朋友.
+  在一位朋友的建议下,暴露tableView及scrollView到.h文件,同时支持自定义预加载视图(须在传入图片数组之前设置),谢谢提出建议的这位朋友.为了有更好的图片加载体验,预计下版本使用SDWebImage框架处理网络图片
 
 
 使用  How to Use it
