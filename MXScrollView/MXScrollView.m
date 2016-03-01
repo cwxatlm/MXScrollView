@@ -44,7 +44,6 @@
     self = [self initWithRootTableView:nil height:frame.size.height];
     if (self) {
         isTabelViewMode = NO;
-        self.scrollViewWidth = _newFrame.size.width;
     }
     return self;
 }
@@ -62,9 +61,9 @@
         self.hasNavigationBar = YES;
         self.scrollViewHeight = height;
         self.duringTime = kDefaultScrollTime;
-        self.scrollViewWidth = KSCREEN_WIDTH;
         self.placeholderImage = KDEFAULT_PLACEHOLDER_IMAGE;
         self.autoresizesSubviews = YES;
+        [self setScrollViewDefaultWidth];
         [self initBaseDataWithTableView:tableView];
         [self initTransaction];
         [self initTimer];
@@ -92,6 +91,10 @@
         [_timer invalidate];
         _timer = nil;
     }
+}
+
+- (void)setScrollViewDefaultWidth {
+    _scrollViewWidth = _newFrame.size.width == 0 ? KSCREEN_WIDTH : _newFrame.size.width;
 }
 
 -  (void)setShowPageIndicator:(BOOL)showPageIndicator {
