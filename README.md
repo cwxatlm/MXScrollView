@@ -9,9 +9,9 @@ The use of a simple with the effects of the rolling cycle view
 ![demo](Pictures/demo1GIF.gif)
 ![demo](Pictures/demo2GIF.gif)
 
-版本1.0.4 
+版本1.1 
 ----
-  在一位朋友的建议下,暴露tableView及scrollView到.h文件,同时支持自定义预加载视图(须在传入图片数组之前设置),谢谢提出建议的这位朋友.为了有更好的图片加载体验,预计下版本使用SDWebImage框架处理网络图片
+  1.1 版本,MXScrollView迎来了新生,大部分代码重构,现在看上去更舒服,功能也更强大,那么问题来了...如果你之前用了我这个库,那么一更新你就发现会报错!这个...如果你真的用了又更新了...那么,不好意思,不过改起来也简单,而且新版功能更强!欢迎体验.
 
 
 使用  How to Use it
