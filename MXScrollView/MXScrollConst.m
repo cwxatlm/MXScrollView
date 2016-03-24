@@ -5,10 +5,14 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-float const kDefaultScrollViewHeight = 200; //默认滚动视图高度
-float const kDefaultPageControlHeight = 30; //pageControl高度
-float const kDefaultScrollTime = 3.0f; //默认切换时间
-float const kDefaultAnimotionTime = 0.5f; //默认动画持续时间
-float const kDefaultNavigationBarHeight = 64;//导航栏高度
+CGFloat const kMXScrollViewHeight = 200; //默认滚动视图高度
+CGFloat const kMXPageControlHeight = 20; //pageControl高度
+CGFloat const kMXNavigationBarHeight = 64;//导航栏高度
+
+float const kMXScrollDuringTime = 3.0f; //默认滚动时间
+float const kMXAnimotionDuringTime = .5f; //默认动画时间
+
+int const kAnimotionTypeCounts = 10;//动画类型数量
+int const kAnimotionDirectionCounts = 4;//动画方向数量
 
 #endif

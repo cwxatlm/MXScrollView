@@ -1,49 +1,58 @@
 
 #import "MXScrollView+Animotion.h"
+#import "MXScrollConst.h"
 
 @implementation MXScrollView (Animotion)
 
-- (NSString *)getAnimotionType:(kCMTransitionType)type {
-    switch (type) {
-        case kCMTransitionMoveIn:
++ (CATransition *)defaultTransition {
+    CATransition *animation = [CATransition animation];
+    animation.duration = kMXAnimotionDuringTime;
+    animation.type = [self getAnimotionType:kMXTransitionPageCurl];
+    animation.subtype = [self getAnimotionDirection:kMXTransitionDirectionFromRight];
+    return animation;
+}
+
++ (NSString *)getAnimotionType:(kMXTransitionType)MXType {
+    switch (MXType) {
+        case kMXTransitionMoveIn:
             return kCATransitionMoveIn;
-        case kCMTransitionFade:
+        case kMXTransitionFade:
             return kCATransitionFade;
-        case kCMTransitionPush:
+        case kMXTransitionPush:
             return kCATransitionPush;
-        case kCMTransitionReveal:
+        case kMXTransitionReveal:
             return kCATransitionReveal;
-        case kCMTransitionPageCurl:
+        case kMXTransitionPageCurl:
             return @"pageCurl";
-        case kCMTransitionPageUnCurl:
+        case kMXTransitionPageUnCurl:
             return @"pageUnCurl";
-        case kCMTransitionCube:
+        case kMXTransitionCube:
             return @"cube";
-        case kCMTransitionOglFlip:
+        case kMXTransitionOglFlip:
             return @"oglFlip";
-        case kCMTransitionRippleEffect:
+        case kMXTransitionRippleEffect:
             return @"rippleEffect";
-        case kCMTransitionSuckEffect:
+        case kMXTransitionSuckEffect:
             return @"suckEffect";
-        case kCMTransitionRandom:
-            return [self getAnimotionType:arc4random_uniform(10)];
+        case kMXTransitionRandom:
+            return [self getAnimotionType:arc4random_uniform(kAnimotionTypeCounts)];
         default:
             break;
     }
 }
 
-- (NSString *)getAnimotionDirection:(kCMTransitionDirection)direction {
-    switch (direction) {
-        case kCMTransitionDirectionFromBottom:
++ (NSString *)getAnimotionDirection:(kMXTransitionDirection)MXDirection {
+    switch (MXDirection) {
+        case kMXTransitionDirectionFromBottom:
             return kCATransitionFromBottom;
-        case kCMTransitionDirectionFromLeft:
+        case kMXTransitionDirectionFromLeft:
             return kCATransitionFromLeft;
-        case kCMTransitionDirectionFromRight:
+        case kMXTransitionDirectionFromRight:
             return kCATransitionFromRight;
-        case kCMTransitionDirectionFromTop:
+        case kMXTransitionDirectionFromTop:
             return kCATransitionFromTop;
-        case kCMTransitionDirectionRandom:
-            return [self getAnimotionDirection:arc4random_uniform(4)];
+        case kMXTransitionDirectionRandom:
+            return [self getAnimotionDirection:arc4random_uniform(kAnimotionDirectionCounts)];
         default:
             break;
     }

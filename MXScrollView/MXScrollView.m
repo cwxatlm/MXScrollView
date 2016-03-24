@@ -7,258 +7,298 @@
 //
 
 #import "MXScrollView.h"
-#import "UIImageView+LoadImage.h"
+#import "MXScrollConst.h"
+#import "MXBaseScrollView.h"
+#import "MXImageView.h"
+#import "MXPageControl.h"
 #import "MXScrollView+Animotion.h"
 
 @interface MXScrollView () <UIScrollViewDelegate>
-{
-    BOOL needAnimotion;//控制是否需要动画
-    BOOL isTabelViewMode;//是否是加在tableView上
-    NSMutableArray *imageViews;//图片控件数组;
-    UIImageView *currentImage;//当前图片
-    NSInteger currentPage;//当前页数
-}
-//scrollview高度
-@property (nonatomic, assign) CGFloat scrollViewHeight;
-//scrollView宽度
-@property (nonatomic, assign) CGFloat scrollViewWidth;
-//动画时间
-@property (nonatomic, assign) float duringTime;
-//实际滚动图片数组
+
+@property (nonatomic, strong) dispatch_source_t timer;
 @property (nonatomic, strong) NSMutableArray *scrollImages;
-//pageControll分页视图
-@property (nonatomic, strong) UIPageControl *pageControl;
-//定时器
-@property (nonatomic, strong) NSTimer *timer;
-//转场动画
-@property (nonatomic, strong) CATransition *animation;
-//单独scrollView的frame记录
-@property (nonatomic, assign) CGRect newFrame;
+@property (nonatomic, strong) NSMutableArray *imageViews;
+@property (nonatomic, strong) UIImageView *currentImage;
+@property (nonatomic, assign) CGFloat scrollViewWidth;
+@property (nonatomic, assign) CGFloat scrollViewHeight;
 
 @end
 
 @implementation MXScrollView
 
 - (instancetype)initWithFrame:(CGRect)frame {
-    _newFrame = frame;
-    self = [self initWithRootTableView:nil height:frame.size.height];
+    self = [super initWithFrame:frame];
     if (self) {
-        isTabelViewMode = NO;
+        _scrollViewHeight = CGRectGetHeight(frame);
+        _scrollViewWidth  = CGRectGetWidth(frame);
+        [self initBaseData];
     }
     return self;
 }
 
-- (instancetype)initWithRootTableView:(UITableView *)tableView {
-    self = [self initWithRootTableView:tableView height:kDefaultScrollViewHeight];
-    return self;
-}
-
-- (instancetype)initWithRootTableView:(UITableView *)tableView height:(float)height {
-    self = [super initWithFrame:tableView == nil ? _newFrame : CGRectMake(0, -height, KSCREEN_WIDTH, height)];
+- (instancetype)initWithFrame:(CGRect)frame
+                rootTableView:(UITableView *)rootTableView {
+    NSParameterAssert(rootTableView);
+    self = [self initWithFrame:CGRectMake(frame.origin.x,
+                                          -CGRectGetHeight(frame),
+                                          CGRectGetWidth(frame),
+                                          CGRectGetHeight(frame))];
     if (self) {
-        isTabelViewMode = YES;
-        self.showAnimotion = YES;
-        self.hasNavigationBar = YES;
-        self.scrollViewHeight = height;
-        self.duringTime = kDefaultScrollTime;
-        self.placeholderImage = KDEFAULT_PLACEHOLDER_IMAGE;
-        self.autoresizesSubviews = YES;
-        [self setScrollViewDefaultWidth];
-        [self initBaseDataWithTableView:tableView];
-        [self initTransaction];
-        [self initTimer];
+        _rootTableView = rootTableView;
+        _rootTableView.contentInset = UIEdgeInsetsMake(CGRectGetHeight(frame), 0, 0, 0);
+        [_rootTableView addSubview:self];
     }
     return self;
 }
 
+- (void)initBaseData {
+    _showAnimotion                  = YES;
+    _hasNavigationBar               = YES;
+    _autoScroll                     = YES;
+    _scrollIntervalTime             = kMXScrollDuringTime;
+    _animotionDuringTime            = kMXAnimotionDuringTime;
+    _pageControlPosition            = kMXPageControlPositionCenter;
+    _placeholderImage               = KDEFAULT_PLACEHOLDER_IMAGE;
+    _animation                      = [MXScrollView defaultTransition];
+    _imageViews                     = [NSMutableArray array];
+    _scrollImages                   = [NSMutableArray array];
+    _rootScrollView                 = [[MXBaseScrollView alloc] initWithFrame:self.bounds];
+    _rootScrollView.delegate        = self;
+    _showPageIndicatorBottonLine    = NO;
+    [self addSubview:_rootScrollView];
+    [self initTimer];
+}
+
+#pragma mark - property set
 - (void)setImages:(NSArray *)images {
-    if (images != nil) {
-        self.scrollImages = [NSMutableArray arrayWithObject:[images lastObject]];
-        [self.scrollImages addObjectsFromArray:images];
-        [self.scrollImages addObject:images.firstObject];
-    }
-    [self.scrollImages enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    NSParameterAssert(images);
+    
+    [self refreshImages];
+    [_scrollImages addObject:images.lastObject];
+    [_scrollImages addObjectsFromArray:images];
+    [_scrollImages addObject:images.firstObject];
+    
+    [_scrollImages enumerateObjectsUsingBlock:^(id  _Nonnull obj,
+                                                NSUInteger idx,
+                                                BOOL * _Nonnull stop) {
         [self initImageWithObject:obj index:idx];
     }];
-    self.scrollView.contentSize = CGSizeMake(self.scrollImages.count * self.scrollViewWidth, 0);
-    self.scrollView.contentOffset = CGPointMake(CGRectGetWidth(self.scrollView.frame), 0);
-    currentImage = imageViews[1];
+    
+    _rootScrollView.contentSize = CGSizeMake(self.scrollImages.count * _scrollViewWidth, 0);
+    _rootScrollView.contentOffset = CGPointMake(_scrollViewWidth, 0);
+    _currentImage = _imageViews[1];
+    
     [self initPageControl];
+    
 }
 
 - (void)setAutoScroll:(BOOL)autoScroll {
-    if (!autoScroll) {
-        [_timer invalidate];
-        _timer = nil;
-    }
-}
-
-- (void)setScrollViewDefaultWidth {
-    _scrollViewWidth = _newFrame.size.width == 0 ? KSCREEN_WIDTH : _newFrame.size.width;
+    if (!autoScroll) dispatch_suspend(_timer);
 }
 
 -  (void)setShowPageIndicator:(BOOL)showPageIndicator {
-    self.pageControl.hidden = showPageIndicator;
+    _pageControl.hidden = showPageIndicator;
 }
 
-- (void)setPageIndicatorCurrentColor:(UIColor *)pageIndicatorCurrentColor {
-    self.pageControl.currentPageIndicatorTintColor = pageIndicatorCurrentColor;
-}
-
-- (void)setPageIndicatorBackColor:(UIColor *)pageIndicatorBackColor {
-    self.pageControl.pageIndicatorTintColor = pageIndicatorBackColor;
+- (void)setShowPageIndicatorBottonLine:(BOOL)showPageIndicatorBottonLine {
+    _showPageIndicatorBottonLine = showPageIndicatorBottonLine;
+    if (_pageControl) _pageControl.bottonLine.hidden = !_showPageIndicatorBottonLine;
 }
 
 - (void)setScrollIntervalTime:(float)scrollIntervalTime {
-    self.duringTime = scrollIntervalTime;
-    [self initTimer];
+    dispatch_source_set_timer(_timer,
+                              dispatch_time(DISPATCH_TIME_NOW, scrollIntervalTime * NSEC_PER_SEC),
+                              (uint64_t)(scrollIntervalTime * NSEC_PER_SEC),
+                              0);
 }
 
 - (void)setPlaceholderImage:(UIImage *)placeholderImage {
     _placeholderImage = placeholderImage;
 }
 
-- (void)setAnimotionType:(kCMTransitionType)animotionType {
-    _animation.type = [self getAnimotionType:animotionType];
+- (void)setAnimotionType:(kMXTransitionType)animotionType {
+    _animation.type = [MXScrollView getAnimotionType:animotionType];
 }
 
-- (void)setAnimotionDirection:(kCMTransitionDirection)animotionDirection {
-    _animation.subtype = [self getAnimotionDirection:animotionDirection];
+- (void)setAnimotionDirection:(kMXTransitionDirection)animotionDirection {
+    _animation.subtype = [MXScrollView getAnimotionDirection:animotionDirection];
 }
 
+- (void)setPageControlPosition:(kMXPageControlPosition)pageControlPosition {
+    _pageControlPosition = pageControlPosition;
+    if (_pageControl) [_pageControl setPosition:_pageControlPosition];
+}
+
+#pragma mark - Need implementation method
 - (void)stretchingImage {
-    CGFloat y = _tableView.contentOffset.y + (self.hasNavigationBar ? kDefaultNavigationBarHeight : 0);
-    if (y < -self.scrollViewHeight) {
+    CGFloat y = _rootTableView.contentOffset.y + (_hasNavigationBar ? kMXNavigationBarHeight : 0);
+    if (y < -_scrollViewHeight) {
         CGRect orginFrame = self.frame;
         orginFrame.origin.y = y;
         orginFrame.size.height = -y;
-        self.frame = orginFrame;
-        self.scrollView.frame = CGRectMake(0, 0, CGRectGetWidth(orginFrame), CGRectGetHeight(orginFrame));
-        currentImage.frame = CGRectMake(currentImage.frame.origin.x, 0, CGRectGetWidth(orginFrame), CGRectGetHeight(orginFrame));
+        [self resetSubViewsFrame:orginFrame];
     }
 }
 
-#pragma mark - scrollView代理
+- (void)invalidateTimer {
+    _timer = nil;
+}
+
+#pragma mark - scrollView delegate
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    NSInteger index = scrollView.contentOffset.x / CGRectGetWidth(scrollView.frame);
-    if (needAnimotion) [self addScorllAnimotion];
+    NSInteger index = scrollView.contentOffset.x / _scrollViewWidth;
     if (index == 0) {
-        scrollView.contentOffset = CGPointMake(CGRectGetWidth(scrollView.frame) * (self.scrollImages.count - 2), 0);
-    } else if (index == self.scrollImages.count - 1) {
-        scrollView.contentOffset = CGPointMake(CGRectGetWidth(scrollView.frame), 0);
+        scrollView.contentOffset = CGPointMake(_scrollViewWidth * (_scrollImages.count - 2), 0);
+    } else if (index == _scrollImages.count - 1) {
+        scrollView.contentOffset = CGPointMake(_scrollViewWidth, 0);
     }
-    NSInteger page = scrollView.contentOffset.x / CGRectGetWidth(scrollView.frame);
-    self.pageControl.currentPage = page - 1;
-    currentImage = imageViews[page];
-    currentPage = page - 1;
-    _tableView.scrollEnabled = YES;
+    NSInteger page = scrollView.contentOffset.x / _scrollViewWidth;
+    _pageControl.currentPage = page - 1;
+    _currentImage = _imageViews[page];
+    _rootTableView.scrollEnabled = YES;
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-    needAnimotion = NO;
-    [_timer setFireDate:[NSDate distantFuture]];
+    dispatch_suspend(_timer);
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     scrollView.contentOffset = CGPointMake(scrollView.contentOffset.x, 0);
 }
 
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    [_timer setFireDate:[NSDate dateWithTimeIntervalSinceNow:self.duringTime]];
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView
+                  willDecelerate:(BOOL)decelerate {
+    if (!_autoScroll) return;
+    dispatch_source_set_timer(_timer,
+                              dispatch_time(DISPATCH_TIME_NOW, _scrollIntervalTime * NSEC_PER_SEC),
+                              (uint64_t)(_scrollIntervalTime * NSEC_PER_SEC),
+                              0);
+    dispatch_resume(_timer);
 }
 
-#pragma mark - 私有方法
-#pragma mark -- 初始化基本数据
-- (void)initBaseDataWithTableView:(UITableView *)tableView {
-    self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.scrollViewWidth, self.scrollViewHeight)];
-    self.scrollView.pagingEnabled = YES;
-    self.scrollView.bounces = NO;
-    self.scrollView.showsHorizontalScrollIndicator = NO;
-    self.scrollView.delegate = self;
-    self.scrollView.contentMode = !isTabelViewMode ? UIViewContentModeScaleToFill : UIViewContentModeScaleAspectFill;;
-    self.autoresizesSubviews = YES;
-    tableView.contentInset = UIEdgeInsetsMake(self.scrollViewHeight, 0, 0, 0);
-    _tableView = tableView;
-    [tableView addSubview:self];
-    [self addSubview:self.scrollView];
-    
-    imageViews = [NSMutableArray array];
-}
+#pragma mark - private method
 
-- (void)initImageWithObject:(id)object index:(NSInteger)index {
-    UIImageView *scrollImage = [[UIImageView alloc] initWithFrame:CGRectMake(index * self.scrollViewWidth, 0, self.scrollViewWidth, self.scrollViewHeight)];
-    scrollImage.contentMode = !isTabelViewMode ? UIViewContentModeScaleToFill : UIViewContentModeScaleAspectFill;//设置自适应
-    scrollImage.autoresizesSubviews = YES;
-    scrollImage.userInteractionEnabled = YES;
-    if ([object isKindOfClass:[UIImage class]]) {
-        scrollImage.image = (UIImage *)object;
-    } else if ([object isKindOfClass:[NSString class]]){
-        [scrollImage cm_downloadImageWithUrl:[NSURL URLWithString:(NSString *)object] placeholderImage:_placeholderImage];
-    }
-    [self addGestureRecognizerToImageView:scrollImage];
-    [imageViews addObject:scrollImage];
-    [self.scrollView addSubview:scrollImage];
+- (void)initImageWithObject:(id)object
+                      index:(NSInteger)index {
+    NSInteger imageIndex = index - 1;
+    MXImageView *scrollImage = [[MXImageView alloc] initWithFrame:CGRectMake(index * _scrollViewWidth,
+                                                                             0,
+                                                                             _scrollViewWidth,
+                                                                             _scrollViewHeight)
+                                                         hasTable:_rootTableView != nil];
+    [scrollImage setImageWithSource:object
+                   placeholderImage:_placeholderImage];
+    [scrollImage setDidTapImageViewHandle:^{
+        if (_tapImageHandle) _tapImageHandle(imageIndex);
+    }];
+    [self implementationDelegateMethod:scrollImage index:imageIndex];
+    [_imageViews addObject:scrollImage];
+    [_rootScrollView addSubview:scrollImage];
 }
 
 - (void)initPageControl {
-    self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, self.frame.size.height - kDefaultPageControlHeight, self.scrollViewWidth, kDefaultPageControlHeight)];
-    self.pageControl.numberOfPages = self.scrollImages.count - 2;
-    self.pageControl.userInteractionEnabled = NO;
-    self.pageControl.currentPageIndicatorTintColor = KDEFAULT_PAGECONTROL_COLOR;
-    self.pageControl.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
-    [self addSubview:self.pageControl];
+    if (_pageControl) [_pageControl removeFromSuperview];
+    _pageControl = [[MXPageControl alloc] initWithFrame:CGRectMake(0,
+                                                                   _scrollViewHeight- kMXPageControlHeight,
+                                                                   _scrollViewWidth,
+                                                                   kMXPageControlHeight)
+                                        superViewHeight:_scrollViewHeight
+                                                  pages:_scrollImages.count - 2];
+    [_pageControl setPosition:_pageControlPosition];
+    _pageControl.bottonLine.hidden = !_showPageIndicatorBottonLine;
+    [self addSubview:_pageControl.bottonLine];
+    [self addSubview:_pageControl];
 }
 
-- (void)initTransaction {
-    _animation = [CATransition animation];
-    _animation.duration = kDefaultAnimotionTime;
-    _animation.type = [self getAnimotionType:kCMTransitionPageCurl];
-    _animation.subtype = [self getAnimotionDirection:kCMTransitionDirectionFromRight];
-}
 
 - (void)initTimer {
-    [_timer invalidate];
-    _timer = nil;
-    _timer = [NSTimer scheduledTimerWithTimeInterval:self.duringTime target:self selector:@selector(imageScroll) userInfo:nil repeats:YES];
+    _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER,
+                                    0,
+                                    0,
+                                    dispatch_get_main_queue());
+    dispatch_source_set_timer(_timer,
+                              dispatch_time(DISPATCH_TIME_NOW, _scrollIntervalTime * NSEC_PER_SEC),
+                              (uint64_t)(_scrollIntervalTime * NSEC_PER_SEC),
+                              0);
+    // 设置回调
+    dispatch_source_set_event_handler(_timer, ^{
+        if (_scrollImages.count == 0) return;
+        if (_rootTableView) {
+            CGRect orginFrame = CGRectMake(0, -_scrollViewHeight, _scrollViewWidth, _scrollViewHeight);
+            [self resetSubViewsFrame:orginFrame];
+            CGFloat navgationBarHeight = _hasNavigationBar ? kMXNavigationBarHeight : 0;
+            if (_rootTableView.contentOffset.y < -_scrollViewHeight - navgationBarHeight)
+                _rootTableView.scrollEnabled = NO;
+        }
+        CGPoint offset = CGPointMake(_rootScrollView.contentOffset.x + _scrollViewWidth, 0);
+        if (_showAnimotion) {
+            _rootScrollView.contentOffset = offset;
+            [_rootScrollView.layer addAnimation:_animation forKey:nil];
+        } else {
+            [UIView animateWithDuration:_animotionDuringTime animations:^{
+                _rootScrollView.contentOffset = offset;
+            }];
+        }
+        [self scrollViewDidEndDecelerating:_rootScrollView];
+    });
+    
+    // 启动定时器
+    dispatch_resume(_timer);
 }
-#pragma mark -- 方法
-//定时器方法
-- (void)imageScroll {
-    if (self.showAnimotion) {
-        self.scrollView.contentOffset = CGPointMake(self.scrollView.contentOffset.x + self.scrollViewWidth, 0);
-    } else {
-        [self normolAnimotion:^{
-            self.scrollView.contentOffset = CGPointMake(self.scrollView.contentOffset.x + self.scrollViewWidth, 0);
-        }];
+
+- (void)refreshImages {
+    [_scrollImages removeAllObjects];
+    [_imageViews   removeAllObjects];
+    [_rootScrollView.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj,
+                                                           NSUInteger idx,
+                                                           BOOL * _Nonnull stop) {
+        if ([obj isKindOfClass:[MXScrollView class]]) {
+            [obj removeFromSuperview];
+        }
+    }];
+}
+
+- (void)resetSubViewsFrame:(CGRect)frame {
+    self.frame = frame;
+    _rootScrollView.frame = CGRectMake(0,
+                                       0,
+                                       CGRectGetWidth(frame),
+                                       CGRectGetHeight(frame));
+    _currentImage.frame = CGRectMake(_currentImage.frame.origin.x,
+                                     0,
+                                     CGRectGetWidth(frame),
+                                     CGRectGetHeight(frame));
+}
+
+#pragma mark - implementation delegate method
+- (void)implementationDelegateMethod:(MXImageView *)mxImageView
+                               index:(NSInteger)index {
+    
+    if ([self.delegate respondsToSelector:@selector(MXScrollView:viewForImageLeftAccessoryViewAtIndex:)]) {
+        UIView *leftAccessoryView = [self.delegate MXScrollView:self
+                           viewForImageLeftAccessoryViewAtIndex:index];
+        if ([self.delegate respondsToSelector:@selector(MXScrollView:leftAccessoryViewAutoresizingMaskAtIndex:)]) {
+            UIViewAutoresizing leftViewAutoresizingMark = [self.delegate MXScrollView:self
+                                             leftAccessoryViewAutoresizingMaskAtIndex:index];
+            leftAccessoryView.autoresizingMask = leftViewAutoresizingMark;
+        } else {
+            leftAccessoryView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+        }
+        [mxImageView addSubview:leftAccessoryView];
     }
-    needAnimotion = YES;
-    _tableView.scrollEnabled = NO;
-    [self resetFrame];
-    [self scrollViewDidEndDecelerating:self.scrollView];
-}
-
-- (void)normolAnimotion:(void(^)())block {
-    [UIView animateWithDuration:kDefaultAnimotionTime animations:block];
-}
-
-- (void)addScorllAnimotion {
-    if (self.showAnimotion) [self.scrollView.layer addAnimation:_animation forKey:nil];
-}
-
-- (void)resetFrame {
-    currentImage.frame = CGRectMake(currentImage.frame.origin.x, 0, self.scrollViewWidth, self.scrollViewHeight);
-}
-
-- (void)addGestureRecognizerToImageView:(UIImageView *)imageView {
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapImageView:)];
-    tap.numberOfTapsRequired = 1;
-    tap.numberOfTouchesRequired = 1;
-    [imageView addGestureRecognizer:tap];
-}
-
-//点击图片方法
-- (void)tapImageView:(UITapGestureRecognizer *)tap {
-    if (self.tapImageHandle) self.tapImageHandle(currentPage);
+    
+    if ([self.delegate respondsToSelector:@selector(MXScrollView:viewForImageRightAccessoryViewAtIndex:)]) {
+        UIView *rightAccessoryView = [self.delegate MXScrollView:self
+                           viewForImageRightAccessoryViewAtIndex:index];
+        if ([self.delegate respondsToSelector:@selector(MXScrollView:rightAccessoryViewAutoresizingMaskAtIndex:)]) {
+            UIViewAutoresizing leftViewAutoresizingMark = [self.delegate MXScrollView:self
+                                            rightAccessoryViewAutoresizingMaskAtIndex:index];
+            rightAccessoryView.autoresizingMask = leftViewAutoresizingMark;
+        } else {
+            rightAccessoryView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+        }
+        [mxImageView addSubview:rightAccessoryView];
+    }
 }
 
 @end

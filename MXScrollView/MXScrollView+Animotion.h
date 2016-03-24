@@ -4,9 +4,13 @@
 
 @interface MXScrollView (Animotion)
 
-//获取动画类型
-- (NSString *)getAnimotionType:(kCMTransitionType)type;
-//获取动画方向
-- (NSString *)getAnimotionDirection:(kCMTransitionDirection)direction;
+/***Create default transition*/
++ (CATransition *)defaultTransition;
+
+/***Get system animotion type from kCMTransitionType*/
++ (NSString *)getAnimotionType:(kMXTransitionType)CMType;
+
+/***Get system AnimotionDirection kCMTransitionType*/
++ (NSString *)getAnimotionDirection:(kMXTransitionDirection)CMDirection;
 
 @end
