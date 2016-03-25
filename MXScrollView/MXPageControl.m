@@ -37,6 +37,7 @@ static CGFloat const kSinglePageIndicatorWidth = 18;
 }
 
 - (void)initBottomLine {
+    
     _bottonLine = [[UIView alloc] initWithFrame:CGRectMake(0,
                                                           _scrollViewHeight - kMXPageControlHeight,
                                                           _scrollViewWidth,
