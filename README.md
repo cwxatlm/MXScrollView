@@ -30,9 +30,9 @@ pod 'MXScrollView'
 
 [Carthage](https://github.com/Carthage/Carthage) 也是一个很好的管理三方框架的工具
 
-You can install Carthage with [Homebrew](http://brew.sh/) using the following command:
-你可以在使用[Homebrew](http://brew.sh/)来安装Carthage  
-安装完homebrew后执行下面命令
+* You can install Carthage with [Homebrew](http://brew.sh/) using the following command:
+* 你可以在使用[Homebrew](http://brew.sh/)来安装Carthage  
+* 安装完homebrew后执行下面命令
 
 ```bash
 $ brew update
