@@ -17,7 +17,7 @@
     if (self) {
         self.autoresizesSubviews = YES;
         self.userInteractionEnabled = YES;
-        
+        self.backgroundColor = [UIColor clearColor];
         self.contentMode = hasTable ? UIViewContentModeScaleAspectFill : UIViewContentModeScaleToFill;
         
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
