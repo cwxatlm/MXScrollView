@@ -10,6 +10,7 @@
 #define MXScroll_h
 
 #import "MXScrollView.h"
+#import "MXEnmuHeader.h"
 #import "MXImageView.h"
 #import "MXBaseScrollView.h"
 #import "MXPageControl.h"
