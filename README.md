@@ -42,7 +42,7 @@ $ brew install carthage
 在你的工程里创建一个`Cartfile`文件 ,并在里面写上下面这句话
 
 ```ogdl
-git "https://github.com/cwxatlm/MXScrollView.git"
+git "https://github.com/cwxatlm/MXScrollView.git" >= 1.2
 ```
 
 在终端里执行`carthage update`
