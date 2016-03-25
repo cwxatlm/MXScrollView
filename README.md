@@ -9,7 +9,7 @@ The use of a simple with the effects of the rolling cycle view
 ![demo](Pictures/demo1GIF.gif)
 ![demo](Pictures/demo2GIF.gif)
 
-版本1.1 
+版本1.2 
 ----
   1.2 版本,大部分代码重构,现在看上去更舒服,功能也更强大,对用旧版本的朋友致歉,因为有些地方没有对旧版本进行兼容.
 
@@ -31,7 +31,8 @@ pod 'MXScrollView'
 [Carthage](https://github.com/Carthage/Carthage) 也是一个很好的管理三方框架的工具
 
 You can install Carthage with [Homebrew](http://brew.sh/) using the following command:
-你可以在使用[Homebrew](http://brew.sh/ 来安装Carthage   安装完homebrew后执行下面命令
+你可以在使用[Homebrew](http://brew.sh/)来安装Carthage  
+安装完homebrew后执行下面命令
 
 ```bash
 $ brew update
@@ -46,6 +47,7 @@ git "https://github.com/cwxatlm/MXScrollView.git"
 
 在终端里执行`carthage update`
 安装好后只需要在对应 Target 中的 Build Setting 中的 Framework Search Path 项加入以下路径
+
 `$(SRCROOT)/Carthage/Build/iOS`
 
 ### Manually  手动导入
