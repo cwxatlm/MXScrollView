@@ -8,9 +8,6 @@
 
 #import "MXScrollView.h"
 #import "MXScrollConst.h"
-#import "MXBaseScrollView.h"
-#import "MXImageView.h"
-#import "MXPageControl.h"
 #import "MXScrollView+Animotion.h"
 
 @interface MXScrollView () <UIScrollViewDelegate>
