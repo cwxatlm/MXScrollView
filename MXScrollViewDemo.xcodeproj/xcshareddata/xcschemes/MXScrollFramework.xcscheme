@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "18F1C98C1CA4F341000A9601"
-               BuildableName = "MXScrollFramework.framework"
+               BuildableName = "MXScrollView.framework"
                BlueprintName = "MXScrollFramework"
                ReferencedContainer = "container:MXScrollViewDemo.xcodeproj">
             </BuildableReference>
@@ -46,7 +46,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "18F1C98C1CA4F341000A9601"
-            BuildableName = "MXScrollFramework.framework"
+            BuildableName = "MXScrollView.framework"
             BlueprintName = "MXScrollFramework"
             ReferencedContainer = "container:MXScrollViewDemo.xcodeproj">
          </BuildableReference>
@@ -64,7 +64,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "18F1C98C1CA4F341000A9601"
-            BuildableName = "MXScrollFramework.framework"
+            BuildableName = "MXScrollView.framework"
             BlueprintName = "MXScrollFramework"
             ReferencedContainer = "container:MXScrollViewDemo.xcodeproj">
          </BuildableReference>
