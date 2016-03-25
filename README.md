@@ -11,7 +11,7 @@ The use of a simple with the effects of the rolling cycle view
 
 版本1.1 
 ----
-  1.1 版本,MXScrollView迎来了新生,大部分代码重构,现在看上去更舒服,功能也更强大,那么问题来了...如果你之前用了我这个库,那么一更新你就发现会报错!这个...如果你真的用了又更新了...那么,不好意思,不过改起来也简单,而且新版功能更强!欢迎体验.
+  1.2 版本,大部分代码重构,现在看上去更舒服,功能也更强大,对用旧版本的朋友致歉,因为有些地方没有对旧版本进行兼容.
 
 
 使用  How to Use it
@@ -23,8 +23,9 @@ CocoaPods
 you can use it in cocoapods
 手动导入工程 
 add it in you project
-#import "MXScrollView.h"
+#import "MXScroll.h"
 
+![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 有两种使用方式  you can use it in two ways
 1.像普通控件一样使用它  use it looks like normal View
@@ -58,6 +59,7 @@ scroll.animotionDirection = kCMTransitionDirectionRandom; //支持多方向 supp
 _scroll = [[MXScrollView alloc] initWithRootTableView:_tableView];
 _scroll.animotionDirection = kCMTransitionDirectionRandom;
 _scroll.animotionType = kCMTransitionRandom;
+_scroll.pageControlPosition = kMXPageControlPositionCenter; //更改pageControl显示的位置
 _scroll.images = @[
                   [UIImage imageNamed:@"picture_one"],
                   [UIImage imageNamed:@"picture_two"],
@@ -75,3 +77,35 @@ _scroll.images = @[
 }
     
 ```
+
+delegate
+------
+```
+
+_scroll.delegate = self;
+
+//delegate method  给图片增加副视图
+- (UIView *)MXScrollView:(MXScrollView *)mxScrollView viewForImageLeftAccessoryViewAtIndex:(NSInteger)index {
+    UILabel *leftLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 150, 50, 20)];
+    leftLabel.backgroundColor = [UIColor clearColor];
+    leftLabel.textColor = [UIColor whiteColor];
+    leftLabel.text = [NSString stringWithFormat:@"第%ld页", index];
+    return leftLabel;
+}
+
+//视图拉伸效果
+- (UIViewAutoresizing)MXScrollView:(MXScrollView *)mxScrollView leftAccessoryViewAutoresizingMaskAtIndex:(NSInteger)index {
+    switch (index) {
+        case 0:
+            return UIViewAutoresizingFlexibleBottomMargin;
+            break;
+        default:
+            return UIViewAutoresizingFlexibleTopMargin;
+            break;
+    }
+}
+
+
+```
+
+更多用法请参考Demo    more example read in Demo
