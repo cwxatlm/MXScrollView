@@ -47,7 +47,7 @@
 		18F1C9A31CA4F341000A9601 /* MXScrollView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 18F1C98D1CA4F341000A9601 /* MXScrollView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		18F1C9AB1CA4F3D9000A9601 /* MXScrollView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 159C2B3B1C7DF3520034292D /* MXScrollView.bundle */; };
 		18F1C9AD1CA4F40C000A9601 /* MXEnmuHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 152B78E21CA41F6C004281A4 /* MXEnmuHeader.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		18F1C9AE1CA4F40C000A9601 /* MXScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = 15E561AB1C7CA68200195642 /* MXScrollView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		18F1C9AE1CA4F40C000A9601 /* MXScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = 15E561AB1C7CA68200195642 /* MXScrollView.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		18F1C9AF1CA4F43C000A9601 /* MXBaseScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = 152B78E01CA41F6C004281A4 /* MXBaseScrollView.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		18F1C9B01CA4F43C000A9601 /* MXImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 152B791E1CA42052004281A4 /* MXImageView.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		18F1C9B11CA4F43C000A9601 /* MXPageControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 152B78E41CA41F6D004281A4 /* MXPageControl.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -92,6 +92,7 @@
 		18F1C9D81CA4F469000A9601 /* UIImageView+CMHighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 152B79081CA41FD5004281A4 /* UIImageView+CMHighlightedWebCache.m */; };
 		18F1C9D91CA4F469000A9601 /* UIImageView+CMWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 152B790A1CA41FD5004281A4 /* UIImageView+CMWebCache.m */; };
 		18F1C9DA1CA4F469000A9601 /* UIView+CMWebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 152B790C1CA41FD5004281A4 /* UIView+CMWebCacheOperation.m */; };
+		18F1CA5D1CA520D8000A9601 /* MXScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = 18F1CA5C1CA520AA000A9601 /* MXScrollView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -187,6 +188,7 @@
 		15E561BA1C7CA86900195642 /* TableScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableScrollViewController.m; sourceTree = "<group>"; };
 		18F1C98D1CA4F341000A9601 /* MXScrollView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MXScrollView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		18F1C9911CA4F341000A9601 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18F1CA5C1CA520AA000A9601 /* MXScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MXScrollView.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -333,6 +335,7 @@
 		18F1C98E1CA4F341000A9601 /* MXScrollFramework */ = {
 			isa = PBXGroup;
 			children = (
+				18F1CA5C1CA520AA000A9601 /* MXScrollView.h */,
 				18F1C9911CA4F341000A9601 /* Info.plist */,
 			);
 			path = MXScrollFramework;
@@ -345,6 +348,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18F1CA5D1CA520D8000A9601 /* MXScrollView.h in Headers */,
 				18F1C9AE1CA4F40C000A9601 /* MXScrollView.h in Headers */,
 				18F1C9AD1CA4F40C000A9601 /* MXEnmuHeader.h in Headers */,
 				18F1C9AF1CA4F43C000A9601 /* MXBaseScrollView.h in Headers */,
