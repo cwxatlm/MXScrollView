@@ -19,7 +19,7 @@ The use of a simple with the effects of the rolling cycle view
 
 ## Installation
 
-### From CocoaPods
+### CocoaPods
 
 你可以使用cocapods导入  you can use it in cocoapods
 ```
@@ -77,6 +77,11 @@ scroll.animotionDirection = kCMTransitionDirectionRandom; //支持多方向 supp
 [scroll setTapImageHandle:^(NSInteger index) {
            //支持点击事件  support tap
         }];
+        
+//在你不需要的时候释放他 例如  release the timer
+- (void)viewWillDisappear:(BOOL)animated {
+    [_scroll invalidateTimer];
+}
 ```
 
 ### 2.加载在tableView上   load it in tableView
@@ -104,7 +109,11 @@ _scroll.images = @[
 #warning 重要，想拉伸必须实现此方法   must implement this method
     [_scroll stretchingImage];
 }
-    
+
+//在你不需要的时候释放他 例如  release the timer
+- (void)viewWillDisappear:(BOOL)animated {
+    [_scroll invalidateTimer];
+}
 ```
 
 ### delegate
