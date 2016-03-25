@@ -21,6 +21,7 @@
         self.bounces = NO;
         self.showsHorizontalScrollIndicator = NO;
         self.autoresizesSubviews = YES;
+        self.backgroundColor = [UIColor clearColor];
     }
     return self;
 }

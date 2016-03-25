@@ -7,7 +7,7 @@
 //
 
 #import "TableScrollViewController.h"
-#import "MXScroll.h"
+#import "MXScrollView.h"
 
 static NSString *const MXScrollCellIdentifer = @"CMCyclicScrollTableViewCell";
 static CGFloat   const MXScrollViewHeight = 175.0f;
@@ -57,7 +57,7 @@ static CGFloat   const MXScrollViewHeight = 175.0f;
                                                              MXScrollViewHeight)
                                     rootTableView:_tableView];
     _scroll.animotionDirection = kMXTransitionDirectionRandom;
-    _scroll.animotionType = kMXTransitionRandom;
+    _scroll.animotionType = kMXTransitionPageCurl;
     _scroll.delegate = self;
     _scroll.images =  @[
                         [UIImage imageNamed:@"picture_one"],
@@ -73,11 +73,6 @@ static CGFloat   const MXScrollViewHeight = 175.0f;
                                               otherButtonTitles:@"ok", nil];
         [alert show];
     }];
-    _scroll.images =  @[
-                        [UIImage imageNamed:@"picture_two"],
-                        [UIImage imageNamed:@"picture_three"],
-                        @"http://pic31.nipic.com/20130624/8821914_104949466000_2.jpg"
-                        ];
 }
 
 #pragma mark - scrollView delegate
@@ -97,7 +92,7 @@ static CGFloat   const MXScrollViewHeight = 175.0f;
 
 - (UIView *)MXScrollView:(MXScrollView *)mxScrollView viewForImageRightAccessoryViewAtIndex:(NSInteger)index {
     UIImageView *rightImage = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetWidth(self.view.bounds) - 40, 140, 30, 30)];
-    rightImage.image = [UIImage imageNamed:@"Image"];
+    rightImage.image = [UIImage imageNamed:@"car"];
     return rightImage;
 }
 

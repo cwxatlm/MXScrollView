@@ -27,6 +27,7 @@ static CGFloat const kSinglePageIndicatorWidth = 18;
     if (self) {
         self.numberOfPages = pages;
         self.userInteractionEnabled = NO;
+        self.backgroundColor = [UIColor clearColor];
         self.currentPageIndicatorTintColor = KDEFAULT_PAGECONTROL_COLOR;
         self.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
         _scrollViewWidth = CGRectGetWidth(frame);

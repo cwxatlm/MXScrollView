@@ -8,9 +8,6 @@
 
 #import "MXScrollView.h"
 #import "MXScrollConst.h"
-#import "MXBaseScrollView.h"
-#import "MXImageView.h"
-#import "MXPageControl.h"
 #import "MXScrollView+Animotion.h"
 
 @interface MXScrollView () <UIScrollViewDelegate>
@@ -65,6 +62,7 @@
     _rootScrollView                 = [[MXBaseScrollView alloc] initWithFrame:self.bounds];
     _rootScrollView.delegate        = self;
     _showPageIndicatorBottonLine    = NO;
+    self.backgroundColor            = [UIColor clearColor];
     [self addSubview:_rootScrollView];
     [self initTimer];
 }
@@ -227,8 +225,10 @@
             CGRect orginFrame = CGRectMake(0, -_scrollViewHeight, _scrollViewWidth, _scrollViewHeight);
             [self resetSubViewsFrame:orginFrame];
             CGFloat navgationBarHeight = _hasNavigationBar ? kMXNavigationBarHeight : 0;
-            if (_rootTableView.contentOffset.y < -_scrollViewHeight - navgationBarHeight)
+            if (_rootTableView.contentOffset.y < -_scrollViewHeight - navgationBarHeight) {
+                _rootTableView.contentOffset = CGPointMake(0, -_scrollViewHeight - navgationBarHeight);
                 _rootTableView.scrollEnabled = NO;
+            }
         }
         CGPoint offset = CGPointMake(_rootScrollView.contentOffset.x + _scrollViewWidth, 0);
         if (_showAnimotion) {

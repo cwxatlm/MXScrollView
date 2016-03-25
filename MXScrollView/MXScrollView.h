@@ -1,7 +1,8 @@
 #import <UIKit/UIKit.h>
 #import "MXEnmuHeader.h"
-@class MXBaseScrollView;
-@class MXPageControl;
+#import "MXBaseScrollView.h"
+#import "MXPageControl.h"
+#import "MXImageView.h"
 @class MXScrollView;
 
 @protocol MXScrollViewDelegate <NSObject>
