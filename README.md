@@ -19,7 +19,7 @@ The use of a simple with the effects of the rolling cycle view
 
 ## Installation
 
-### From CocoaPods
+### CocoaPods
 
 你可以使用cocapods导入  you can use it in cocoapods
 ```
@@ -30,9 +30,9 @@ pod 'MXScrollView'
 
 [Carthage](https://github.com/Carthage/Carthage) 也是一个很好的管理三方框架的工具
 
-You can install Carthage with [Homebrew](http://brew.sh/) using the following command:
-你可以在使用[Homebrew](http://brew.sh/)来安装Carthage  
-安装完homebrew后执行下面命令
+* You can install Carthage with [Homebrew](http://brew.sh/) using the following command:
+* 你可以使用[Homebrew](http://brew.sh/)来安装Carthage  
+* 安装完homebrew后执行下面命令
 
 ```bash
 $ brew update
@@ -48,8 +48,9 @@ git "https://github.com/cwxatlm/MXScrollView.git"
 在终端里执行`carthage update`
 * 安装好后只需要在对应 Target 中的 Build Setting 中的 Framework Search Path 项加入以下路径
 * `$(SRCROOT)/Carthage/Build/iOS`
-* 导入头文件 
-* `#import <MXScrollView/MXScrollView.h>`
+
+导入头文件 
+ `#import <MXScrollView/MXScrollView.h>`
 
 ### Manually  手动导入
 * Drag the `MXScrollView` folder into your project.  把`MXScrollView`文件夹拖入工程
@@ -77,6 +78,11 @@ scroll.animotionDirection = kCMTransitionDirectionRandom; //支持多方向 supp
 [scroll setTapImageHandle:^(NSInteger index) {
            //支持点击事件  support tap
         }];
+        
+//在你不需要的时候释放他 例如  release the timer
+- (void)viewWillDisappear:(BOOL)animated {
+    [_scroll invalidateTimer];
+}
 ```
 
 ### 2.加载在tableView上   load it in tableView
@@ -104,7 +110,11 @@ _scroll.images = @[
 #warning 重要，想拉伸必须实现此方法   must implement this method
     [_scroll stretchingImage];
 }
-    
+
+//在你不需要的时候释放他 例如  release the timer
+- (void)viewWillDisappear:(BOOL)animated {
+    [_scroll invalidateTimer];
+}
 ```
 
 ### delegate
