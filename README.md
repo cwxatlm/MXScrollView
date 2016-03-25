@@ -17,19 +17,45 @@ The use of a simple with the effects of the rolling cycle view
 使用  How to Use it
 =====
 
-CocoaPods
----
-你可以使用cocapods导入  pod 'MXScrollView'   
-you can use it in cocoapods
-手动导入工程 
-add it in you project
-#import "MXScroll.h"
+## Installation
 
-![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+### From CocoaPods
+
+你可以使用cocapods导入  you can use it in cocoapods
+```
+pod 'MXScrollView'   
+```
+
+### Carthage 
+
+[Carthage](https://github.com/Carthage/Carthage) 也是一个很好的管理三方框架的工具
+
+You can install Carthage with [Homebrew](http://brew.sh/) using the following command:
+你可以在使用[Homebrew](http://brew.sh/ 来安装Carthage   安装完homebrew后执行下面命令
+
+```bash
+$ brew update
+$ brew install carthage
+```
+
+在你的工程里创建一个`Cartfile`文件 ,并在里面写上下面这句话
+
+```ogdl
+git "https://github.com/cwxatlm/MXScrollView.git"
+```
+
+在终端里执行`carthage update`
+安装好后只需要在对应 Target 中的 Build Setting 中的 Framework Search Path 项加入以下路径
+`$(SRCROOT)/Carthage/Build/iOS`
+
+### Manually  手动导入
+* Drag the `MXScrollView` folder into your project.  把`MXScrollView`文件夹拖入工程
+* `Targets->Build Phases->Copy Bundle Resources`.
+* `#imprort "MXScroll.h"`
 
 有两种使用方式  you can use it in two ways
-1.像普通控件一样使用它  use it looks like normal View
---------
+### 1.像普通控件一样使用它  use it looks like normal View
+
 
 ####Objective-C
 ```objective-c
@@ -50,8 +76,8 @@ scroll.animotionDirection = kCMTransitionDirectionRandom; //支持多方向 supp
         }];
 ```
 
-2.加载在tableView上   load it in tableView
-------
+### 2.加载在tableView上   load it in tableView
+
 此时必须写为全局变量
 
 ####Objective-C
@@ -78,8 +104,8 @@ _scroll.images = @[
     
 ```
 
-delegate
-------
+### delegate
+
 ```
 
 _scroll.delegate = self;
@@ -108,4 +134,4 @@ _scroll.delegate = self;
 
 ```
 
-更多用法请参考Demo    more example read in Demo
+### 更多用法请参考Demo    more example read in Demo
