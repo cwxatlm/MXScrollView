@@ -7,7 +7,7 @@
 //
 
 #import "TableScrollViewController.h"
-#import "MXScroll.h"
+#import "MXScrollView.h"
 
 static NSString *const MXScrollCellIdentifer = @"CMCyclicScrollTableViewCell";
 static CGFloat   const MXScrollViewHeight = 175.0f;

@@ -7,7 +7,7 @@
 //
 
 #import "NormalScrollViewController.h"
-#import "MXScroll.h"
+#import "MXScrollView.h"
 
 static float const scrollWidth  = 150;
 static float const scrollHeight = 100;
