@@ -42,18 +42,19 @@ $ brew install carthage
 在你的工程里创建一个`Cartfile`文件 ,并在里面写上下面这句话
 
 ```ogdl
-git "https://github.com/cwxatlm/MXScrollView.git" >= 1.2
+git "https://github.com/cwxatlm/MXScrollView.git"
 ```
 
 在终端里执行`carthage update`
 安装好后只需要在对应 Target 中的 Build Setting 中的 Framework Search Path 项加入以下路径
-
 `$(SRCROOT)/Carthage/Build/iOS`
+导入头文件 
+`#import <MXScrollView/MXScrollView.h>`
 
 ### Manually  手动导入
 * Drag the `MXScrollView` folder into your project.  把`MXScrollView`文件夹拖入工程
 * `Targets->Build Phases->Copy Bundle Resources`.
-* `#imprort "MXScroll.h"`
+* `#imprort "MXScrollView.h"`
 
 有两种使用方式  you can use it in two ways
 ### 1.像普通控件一样使用它  use it looks like normal View
