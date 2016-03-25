@@ -48,8 +48,9 @@ git "https://github.com/cwxatlm/MXScrollView.git"
 在终端里执行`carthage update`
 * 安装好后只需要在对应 Target 中的 Build Setting 中的 Framework Search Path 项加入以下路径
 * `$(SRCROOT)/Carthage/Build/iOS`
-* 导入头文件 
-* `#import <MXScrollView/MXScrollView.h>`
+
+导入头文件 
+ `#import <MXScrollView/MXScrollView.h>`
 
 ### Manually  手动导入
 * Drag the `MXScrollView` folder into your project.  把`MXScrollView`文件夹拖入工程
