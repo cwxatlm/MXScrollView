@@ -27,7 +27,7 @@ static NSString *const tableIdentifier = @"TableViewCell";
 }
 
 - (void)initBaseData {
-    self.title = @"CMCyclicScroll";
+    self.title = @"MXScrollView";
     [self.navigationController.navigationBar setTitleTextAttributes:@{
                                                                       NSForegroundColorAttributeName:[UIColor lightGrayColor]}];
     self.navigationController.navigationBar.tintColor = [UIColor lightGrayColor];
