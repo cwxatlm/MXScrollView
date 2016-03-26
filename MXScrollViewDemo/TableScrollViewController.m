@@ -57,7 +57,7 @@ static CGFloat   const MXScrollViewHeight = 175.0f;
                                                              MXScrollViewHeight)
                                     rootTableView:_tableView];
     _scroll.animotionDirection = kMXTransitionDirectionRandom;
-    _scroll.animotionType = kMXTransitionPageCurl;
+    _scroll.animotionType = kMXTransitionRandom;
     _scroll.delegate = self;
     _scroll.images =  @[
                         [UIImage imageNamed:@"picture_one"],

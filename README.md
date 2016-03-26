@@ -9,9 +9,9 @@ The use of a simple with the effects of the rolling cycle view
 ![demo](Pictures/demo1GIF.gif)
 ![demo](Pictures/demo2GIF.gif)
 
-版本1.2 
+版本1.2.1 
 ----
-  1.2 版本,大部分代码重构,现在看上去更舒服,功能也更强大,对用旧版本的朋友致歉,因为有些地方没有对旧版本进行兼容.
+  1.2.1 版本,大部分代码重构,现在看上去更舒服,功能也更强大,对用旧版本的朋友致歉,因为有些地方没有对旧版本进行兼容.图片加载使用的成熟开源框架SDWebImage.
 
 
 使用  How to Use it
@@ -42,7 +42,7 @@ $ brew install carthage
 在你的工程里创建一个`Cartfile`文件 ,并在里面写上下面这句话
 
 ```ogdl
-git "https://github.com/cwxatlm/MXScrollView.git"
+github "cwxatlm/MXScrollView"
 ```
 
 在终端里执行`carthage update`
@@ -71,8 +71,8 @@ scroll.images =  @[
                   [UIImage imageNamed:@"picture_three"],
                   @"http://pic31.nipic.com/20130624/8821914_104949466000_2.jpg"
                   ];
-scroll.animotionType = kCMTransitionRandom; //支持多特效 support serveral type
-scroll.animotionDirection = kCMTransitionDirectionRandom; //支持多方向 support serveral direction
+scroll.animotionType = kMXTransitionRandom; //支持多特效 support serveral type
+scroll.animotionDirection = kMXTransitionDirectionRandom; //支持多方向 support serveral direction
 [self.view addSubview:scroll];
 
 [scroll setTapImageHandle:^(NSInteger index) {
@@ -81,7 +81,7 @@ scroll.animotionDirection = kCMTransitionDirectionRandom; //支持多方向 supp
         
 //在你不需要的时候释放他 例如  release the timer
 - (void)viewWillDisappear:(BOOL)animated {
-    [_scroll invalidateTimer];
+    [scroll invalidateTimer];
 }
 ```
 
@@ -91,9 +91,13 @@ scroll.animotionDirection = kCMTransitionDirectionRandom; //支持多方向 supp
 
 ####Objective-C
 ```objective-c
-_scroll = [[MXScrollView alloc] initWithRootTableView:_tableView];
-_scroll.animotionDirection = kCMTransitionDirectionRandom;
-_scroll.animotionType = kCMTransitionRandom;
+_scroll = [[MXScrollView alloc] initWithFrame:CGRectMake(0,
+                                                         0,
+                                                         CGRectGetWidth(self.view.bounds),
+                                                         MXScrollViewHeight)
+                                rootTableView:_tableView];
+_scroll.animotionDirection = kMXTransitionDirectionRandom;
+_scroll.animotionType = kMXTransitionRandom;
 _scroll.pageControlPosition = kMXPageControlPositionCenter; //更改pageControl显示的位置
 _scroll.images = @[
                   [UIImage imageNamed:@"picture_one"],

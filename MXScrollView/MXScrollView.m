@@ -252,7 +252,7 @@
     [_rootScrollView.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj,
                                                            NSUInteger idx,
                                                            BOOL * _Nonnull stop) {
-        if ([obj isKindOfClass:[MXScrollView class]]) {
+        if ([obj isKindOfClass:[MXImageView class]]) {
             [obj removeFromSuperview];
         }
     }];
