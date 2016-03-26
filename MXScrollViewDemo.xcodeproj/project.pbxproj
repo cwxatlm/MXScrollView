@@ -51,8 +51,8 @@
 		18F1C9AF1CA4F43C000A9601 /* MXBaseScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = 152B78E01CA41F6C004281A4 /* MXBaseScrollView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		18F1C9B01CA4F43C000A9601 /* MXImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 152B791E1CA42052004281A4 /* MXImageView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		18F1C9B11CA4F43C000A9601 /* MXPageControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 152B78E41CA41F6D004281A4 /* MXPageControl.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		18F1C9B21CA4F43D000A9601 /* MXScrollConst.h in Headers */ = {isa = PBXBuildFile; fileRef = 15E561AE1C7CA6A700195642 /* MXScrollConst.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		18F1C9B31CA4F43D000A9601 /* MXScrollView+Animotion.h in Headers */ = {isa = PBXBuildFile; fileRef = 15E561B11C7CA6DC00195642 /* MXScrollView+Animotion.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		18F1C9B21CA4F43D000A9601 /* MXScrollConst.h in Headers */ = {isa = PBXBuildFile; fileRef = 15E561AE1C7CA6A700195642 /* MXScrollConst.h */; };
+		18F1C9B31CA4F43D000A9601 /* MXScrollView+Animotion.h in Headers */ = {isa = PBXBuildFile; fileRef = 15E561B11C7CA6DC00195642 /* MXScrollView+Animotion.h */; };
 		18F1C9B41CA4F43D000A9601 /* CMSDImageCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 152B78EB1CA41FD5004281A4 /* CMSDImageCache.h */; };
 		18F1C9B51CA4F43D000A9601 /* CMSDWebImageCompat.h in Headers */ = {isa = PBXBuildFile; fileRef = 152B78ED1CA41FD5004281A4 /* CMSDWebImageCompat.h */; };
 		18F1C9B61CA4F43D000A9601 /* CMSDWebImageDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 152B78EF1CA41FD5004281A4 /* CMSDWebImageDecoder.h */; };
