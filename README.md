@@ -9,9 +9,9 @@ The use of a simple with the effects of the rolling cycle view
 ![demo](Pictures/demo1GIF.gif)
 ![demo](Pictures/demo2GIF.gif)
 
-版本1.2 
+版本1.2.1 
 ----
-  1.2 版本,大部分代码重构,现在看上去更舒服,功能也更强大,对用旧版本的朋友致歉,因为有些地方没有对旧版本进行兼容.图片加载使用的成熟开源框架SDWebImage.
+  1.2.1 版本,大部分代码重构,现在看上去更舒服,功能也更强大,对用旧版本的朋友致歉,因为有些地方没有对旧版本进行兼容.图片加载使用的成熟开源框架SDWebImage.
 
 
 使用  How to Use it
