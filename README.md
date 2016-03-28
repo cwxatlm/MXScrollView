@@ -52,6 +52,8 @@ github "cwxatlm/MXScrollView"
 导入头文件 
  `#import <MXScrollView/MXScrollView.h>`
 
+想对Carthage了解更多也可以看这里[让自己的项目支持Carthage](http://www.jianshu.com/p/bf263c596538)
+
 ### Manually  手动导入
 * Drag the `MXScrollView` folder into your project.  把`MXScrollView`文件夹拖入工程
 * `Targets->Build Phases->Copy Bundle Resources`.
