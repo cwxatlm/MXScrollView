@@ -9,6 +9,17 @@
 #ifndef MXScrollHeader_h
 #define MXScrollHeader_h
 
+typedef NS_ENUM(NSInteger, kMXScrollViewDirection) {
+    /**
+     *  水平滚动
+     */
+    kMXScrollViewDirectionHorizontal,
+    /**
+     *  竖直滚动
+     */
+    kMXScrollViewDirectionVertical
+};
+
 //特效类型
 typedef NS_ENUM(NSInteger, kMXTransitionType) {
     /**
@@ -28,31 +39,31 @@ typedef NS_ENUM(NSInteger, kMXTransitionType) {
      */
     kMXTransitionReveal,
     /**
-     *  向上翻一页
+     *  向上翻一页(私有API,可能影响审核)
      */
     kMXTransitionPageCurl,
     /**
-     *  向下翻一页
+     *  向下翻一页(私有API,可能影响审核)
      */
     kMXTransitionPageUnCurl,
     /**
-     *  滴水效果
+     *  滴水效果(私有API,可能影响审核)
      */
     kMXTransitionRippleEffect,
     /**
-     *  收缩效果,如同mac的神奇效果
+     *  收缩效果,如同mac的神奇效果(私有API,可能影响审核)
      */
     kMXTransitionSuckEffect,
     /**
-     *  立方体效果
+     *  立方体效果(私有API,可能影响审核)
      */
     kMXTransitionCube,
     /**
-     *  上下翻转效果
+     *  上下翻转效果(私有API,可能影响审核)
      */
     kMXTransitionOglFlip,
     /**
-     *  随机效果
+     *  随机效果(私有API,可能影响审核)
      */
     kMXTransitionRandom
 };

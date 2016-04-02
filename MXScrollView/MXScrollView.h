@@ -22,27 +22,29 @@
 
 @end
 
-/**图片的拉伸类型为自适应，如果发现图片出现重叠，覆盖，交叉，请调整高度后再运行
- Stretch type picture for adaptive, if found images overlap, coverage, cross, please adjust the height after operation*/
+/**图片的拉伸类型为自适应，如果发现图片出现重叠，覆盖，交叉，请调整高度后再运行*/
 @interface MXScrollView : UIView
-/**点击回调*/
-@property (nonatomic, copy) void (^tapImageHandle)(NSInteger index);
 
 /**传入的图片数组(支持传入图片或图片地址)*/
 @property (nonatomic, strong) NSArray *images;
 
-/**是否有导航栏 默认为yes 拉伸模式下顶部无导航栏须设置为NO
- * If loaded on tableView and no navigationBar, must set this property value NO
- */
+/**点击回调*/
+@property (nonatomic, copy) void (^tapImageHandle)(NSInteger index);
+
+#pragma mark - 属性设置
+/**滚动方向(默认横向)*/
+@property (nonatomic, assign) kMXScrollViewDirection scrollDirection;
+
+/**是否有导航栏 默认为yes 拉伸模式下顶部无导航栏须设置为NO*/
 @property (nonatomic, assign) BOOL hasNavigationBar;
 
 /**自动换页 default is yes*/
 @property (nonatomic, assign) BOOL autoScroll;
 
-/**是否显示切换动画 default is yse(pageCurl) 为no时为平滑切换效果*/
+/**是否显示切换动画 default is no 为no时为平滑切换效果*/
 @property (nonatomic, assign) BOOL showAnimotion;//
 
-/**是否显示分页视图 默认为yes*/
+/**是否显示pageControl 默认为yes*/
 @property (nonatomic, assign) BOOL showPageIndicator;
 
 /**是否显示分页视图背景(半透明黑色背景) default is no*/
@@ -93,6 +95,7 @@
  *  @return 实例化对象
  */
 - (instancetype)initWithFrame:(CGRect)frame;
+
 
 /**
  *  TableView模式(无导航栏需设置hasNavigationBar为NO)

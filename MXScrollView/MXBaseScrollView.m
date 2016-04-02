@@ -20,6 +20,7 @@
         self.pagingEnabled = YES;
         self.bounces = NO;
         self.showsHorizontalScrollIndicator = NO;
+        self.showsVerticalScrollIndicator = NO;
         self.autoresizesSubviews = YES;
         self.backgroundColor = [UIColor clearColor];
     }

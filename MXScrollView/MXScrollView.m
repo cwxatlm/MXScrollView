@@ -13,6 +13,7 @@
 @interface MXScrollView () <UIScrollViewDelegate>
 
 @property (nonatomic, strong) dispatch_source_t timer;
+@property (nonatomic, strong) NSArray *originImages;
 @property (nonatomic, strong) NSMutableArray *scrollImages;
 @property (nonatomic, strong) NSMutableArray *imageViews;
 @property (nonatomic, strong) UIImageView *currentImage;
@@ -49,11 +50,12 @@
 }
 
 - (void)initBaseData {
-    _showAnimotion                  = YES;
+    _showAnimotion                  = NO;
     _hasNavigationBar               = YES;
     _autoScroll                     = YES;
     _scrollIntervalTime             = kMXScrollDuringTime;
     _animotionDuringTime            = kMXAnimotionDuringTime;
+    _scrollDirection                = kMXScrollViewDirectionHorizontal;
     _pageControlPosition            = kMXPageControlPositionCenter;
     _placeholderImage               = KDEFAULT_PLACEHOLDER_IMAGE;
     _animation                      = [MXScrollView defaultTransition];
@@ -70,7 +72,7 @@
 #pragma mark - property set
 - (void)setImages:(NSArray *)images {
     NSParameterAssert(images);
-    
+    _originImages = images;
     [self refreshImages];
     [_scrollImages addObject:images.lastObject];
     [_scrollImages addObjectsFromArray:images];
@@ -82,12 +84,28 @@
         [self initImageWithObject:obj index:idx];
     }];
     
-    _rootScrollView.contentSize = CGSizeMake(self.scrollImages.count * _scrollViewWidth, 0);
-    _rootScrollView.contentOffset = CGPointMake(_scrollViewWidth, 0);
+    switch (_scrollDirection) {
+        case kMXScrollViewDirectionHorizontal: {
+            _rootScrollView.contentSize = CGSizeMake(_scrollImages.count * _scrollViewWidth, 0);
+            _rootScrollView.contentOffset = CGPointMake(_scrollViewWidth, 0);
+        }
+            break;
+        case kMXScrollViewDirectionVertical: {
+            _rootScrollView.contentSize = CGSizeMake(0, _scrollImages.count * _scrollViewHeight);
+            _rootScrollView.contentOffset = CGPointMake(0, _scrollViewHeight);
+        }
+            break;
+        default:
+            break;
+    }
+    
     _currentImage = _imageViews[1];
-    
     [self initPageControl];
-    
+}
+
+- (void)setScrollDirection:(kMXScrollViewDirection)scrollDirection {
+    _scrollDirection = scrollDirection;
+    if (_originImages) [self setImages:_originImages];
 }
 
 - (void)setAutoScroll:(BOOL)autoScroll {
@@ -144,13 +162,31 @@
 
 #pragma mark - scrollView delegate
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    NSInteger index = scrollView.contentOffset.x / _scrollViewWidth;
-    if (index == 0) {
-        scrollView.contentOffset = CGPointMake(_scrollViewWidth * (_scrollImages.count - 2), 0);
-    } else if (index == _scrollImages.count - 1) {
-        scrollView.contentOffset = CGPointMake(_scrollViewWidth, 0);
+    NSInteger index = 0;
+    NSInteger page  = 0;
+    switch (_scrollDirection) {
+        case kMXScrollViewDirectionHorizontal: {
+            index = scrollView.contentOffset.x / _scrollViewWidth;
+            if (index == 0) {
+                scrollView.contentOffset = CGPointMake(_scrollViewWidth * (_scrollImages.count - 2), 0);
+            } else if (index == _scrollImages.count - 1) {
+                scrollView.contentOffset = CGPointMake(_scrollViewWidth, 0);
+            }
+            page = scrollView.contentOffset.x / _scrollViewWidth;
+        }
+            break;
+        case kMXScrollViewDirectionVertical: {
+            index = scrollView.contentOffset.y / _scrollViewHeight;
+            if (index == 0) {
+                scrollView.contentOffset = CGPointMake(0, _scrollViewHeight * (_scrollImages.count - 2));
+            } else if (index == _scrollImages.count - 1) {
+                scrollView.contentOffset = CGPointMake(0, _scrollViewHeight);
+            }
+            page = scrollView.contentOffset.y / _scrollViewHeight;
+        }
+        default:
+            break;
     }
-    NSInteger page = scrollView.contentOffset.x / _scrollViewWidth;
     _pageControl.currentPage = page - 1;
     _currentImage = _imageViews[page];
     _rootTableView.scrollEnabled = YES;
@@ -161,7 +197,17 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    scrollView.contentOffset = CGPointMake(scrollView.contentOffset.x, 0);
+    switch (_scrollDirection) {
+        case kMXScrollViewDirectionHorizontal:
+            scrollView.contentOffset = CGPointMake(scrollView.contentOffset.x, 0);
+            break;
+        case kMXScrollViewDirectionVertical:
+            scrollView.contentOffset = CGPointMake(0, scrollView.contentOffset.y);
+            break;
+        default:
+            break;
+    }
+    //scrollView.contentOffset = CGPointMake(scrollView.contentOffset.x, 0);
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView
@@ -179,11 +225,26 @@
 - (void)initImageWithObject:(id)object
                       index:(NSInteger)index {
     NSInteger imageIndex = index - 1;
-    MXImageView *scrollImage = [[MXImageView alloc] initWithFrame:CGRectMake(index * _scrollViewWidth,
-                                                                             0,
-                                                                             _scrollViewWidth,
-                                                                             _scrollViewHeight)
+    CGRect imageFrame = CGRectZero;
+    switch (_scrollDirection) {
+        case kMXScrollViewDirectionHorizontal:
+            imageFrame = CGRectMake(index * _scrollViewWidth,
+                               0,
+                               _scrollViewWidth,
+                               _scrollViewHeight);
+            break;
+        case kMXScrollViewDirectionVertical:
+            imageFrame = CGRectMake(0,
+                               index * _scrollViewHeight,
+                               _scrollViewWidth,
+                               _scrollViewHeight);
+        default:
+            break;
+    }
+    MXImageView *scrollImage = [[MXImageView alloc] initWithFrame:imageFrame
                                                          hasTable:_rootTableView != nil];
+    _rootScrollView.backgroundColor = [UIColor redColor];
+    scrollImage.backgroundColor = [UIColor cyanColor];
     [scrollImage setImageWithSource:object
                    placeholderImage:_placeholderImage];
     [scrollImage setDidTapImageViewHandle:^{
@@ -230,7 +291,16 @@
                 _rootTableView.scrollEnabled = NO;
             }
         }
-        CGPoint offset = CGPointMake(_rootScrollView.contentOffset.x + _scrollViewWidth, 0);
+        CGPoint offset = CGPointZero;
+        switch (_scrollDirection) {
+            case kMXScrollViewDirectionHorizontal:
+                offset = CGPointMake(_rootScrollView.contentOffset.x + _scrollViewWidth, 0);
+                break;
+            case kMXScrollViewDirectionVertical:
+                offset = CGPointMake(0, _rootScrollView.contentOffset.y + _scrollViewHeight);
+            default:
+                break;
+        }
         if (_showAnimotion) {
             _rootScrollView.contentOffset = offset;
             [_rootScrollView.layer addAnimation:_animation forKey:nil];
@@ -264,10 +334,22 @@
                                        0,
                                        CGRectGetWidth(frame),
                                        CGRectGetHeight(frame));
-    _currentImage.frame = CGRectMake(_currentImage.frame.origin.x,
-                                     0,
-                                     CGRectGetWidth(frame),
-                                     CGRectGetHeight(frame));
+    switch (_scrollDirection) {
+        case kMXScrollViewDirectionHorizontal:
+            _currentImage.frame = CGRectMake(_currentImage.frame.origin.x,
+                                             0,
+                                             CGRectGetWidth(frame),
+                                             CGRectGetHeight(frame));
+            break;
+        case kMXScrollViewDirectionVertical:
+            _currentImage.frame = CGRectMake(0,
+                                             _currentImage.frame.origin.y,
+                                             CGRectGetWidth(frame),
+                                             CGRectGetHeight(frame));
+        default:
+            break;
+    }
+    
 }
 
 #pragma mark - implementation delegate method
