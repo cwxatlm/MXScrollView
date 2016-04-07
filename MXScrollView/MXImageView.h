@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MXEnmuHeader.h"
+#import "MXEnumHeader.h"
 
 @interface MXImageView : UIImageView
 

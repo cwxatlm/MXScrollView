@@ -14,14 +14,12 @@ static CGFloat const kSinglePageIndicatorWidth = 18;
 @interface MXPageControl ()
 
 @property (nonatomic, assign) CGFloat scrollViewWidth;
-@property (nonatomic, assign) CGFloat scrollViewHeight;
 
 @end
 
 @implementation MXPageControl
 
 - (instancetype)initWithFrame:(CGRect)frame
-              superViewHeight:(CGFloat)height
                         pages:(NSInteger)pages {
     self = [super initWithFrame:frame];
     if (self) {
@@ -31,20 +29,8 @@ static CGFloat const kSinglePageIndicatorWidth = 18;
         self.currentPageIndicatorTintColor = KDEFAULT_PAGECONTROL_COLOR;
         self.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
         _scrollViewWidth = CGRectGetWidth(frame);
-        _scrollViewHeight = height;
-        [self initBottomLine];
     }
     return self;
-}
-
-- (void)initBottomLine {
-    
-    _bottonLine = [[UIView alloc] initWithFrame:CGRectMake(0,
-                                                          _scrollViewHeight - kMXPageControlHeight,
-                                                          _scrollViewWidth,
-                                                          kMXPageControlHeight)];
-    _bottonLine.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
-    _bottonLine.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
 }
 
 - (void)setPosition:(kMXPageControlPosition)pisition {

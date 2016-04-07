@@ -1,8 +1,15 @@
+//
+//  MXTransaction.m
+//  MXScrollViewDemo
+//
+//  Created by apple on 16/4/5.
+//  Copyright © 2016年 PRO. All rights reserved.
+//
 
-#import "MXScrollView+Animotion.h"
+#import "MXTransaction.h"
 #import "MXScrollConst.h"
 
-@implementation MXScrollView (Animotion)
+@implementation MXTransaction
 
 + (CATransition *)defaultTransition {
     CATransition *animation = [CATransition animation];

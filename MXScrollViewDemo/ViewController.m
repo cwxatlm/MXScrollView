@@ -7,8 +7,8 @@
 //
 
 #import "ViewController.h"
-#import "NormalScrollViewController.h"
-#import "TableScrollViewController.h"
+#import "EasyUseViewController.h"
+#import "TableUseViewController.h"
 
 static NSString *const tableIdentifier = @"TableViewCell";
 
@@ -49,7 +49,7 @@ static NSString *const tableIdentifier = @"TableViewCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:tableIdentifier forIndexPath:indexPath];
     switch (indexPath.row) {
         case 0: {
-            cell.textLabel.text = @"NormolScrollDemonstration";
+            cell.textLabel.text = @"EasyUseViewController";
         }
             break;
         case 1: {
@@ -66,11 +66,11 @@ static NSString *const tableIdentifier = @"TableViewCell";
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     switch (indexPath.row) {
         case 0: {
-            [self.navigationController pushViewController:[[NormalScrollViewController alloc] init] animated:YES];
+            [self.navigationController pushViewController:[[EasyUseViewController alloc] init] animated:YES];
         }
             break;
         case 1: {
-            [self.navigationController pushViewController:[[TableScrollViewController alloc] init] animated:YES];
+            [self.navigationController pushViewController:[[TableUseViewController alloc] init] animated:YES];
         }
             break;
         default:

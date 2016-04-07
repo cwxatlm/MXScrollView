@@ -6,8 +6,10 @@
 //  Copyright © 2016年 PRO. All rights reserved.
 //
 
-#ifndef MXScrollHeader_h
-#define MXScrollHeader_h
+#ifndef MXEnumHeader_h
+#define MXEnumHeader_h
+
+#import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSInteger, kMXScrollViewDirection) {
     /**
@@ -106,6 +108,22 @@ typedef NS_ENUM(NSInteger, kMXPageControlPosition) {
      *  右边
      */
     kMXPageControlPositionRight,
+};
+
+//pageControl位置
+typedef NS_ENUM(NSInteger, kMXScrollViewType) {
+    /**
+     *  图片类型
+     */
+    kMXScrollViewTypeImageView,
+    /**
+     *  标签类型
+     */
+    kMXScrollViewTypeLabel,
+    /**
+     *  自定义类型
+     */
+    kMXScrollViewTypeCustom,
 };
 
 #endif /* MXScrollHeader_h */
