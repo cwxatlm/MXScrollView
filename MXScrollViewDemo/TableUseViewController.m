@@ -9,19 +9,23 @@
 #import "TableUseViewController.h"
 #import "MXScrollView.h"
 
-#define Screen_Width [UIScreen mainScreen].bounds
-static CGFloat const scrollViewWidth = 300;
-static CGFloat const scrollViewHeight = 180;
+#define Screen_Width [UIScreen mainScreen].bounds.size.width
+static CGFloat const scrollViewHeight = 220;
 
 static NSString *const tableViewCellIdentifer = @"tableViewCellIdentifer";
 
-@interface TableUseViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface TableUseViewController () <UITableViewDelegate, UITableViewDataSource, MXScrollViewDelegate>
 {
     MXImageScrollView *scroll;
 }
 @end
 
 @implementation TableUseViewController
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [scroll invalidateTimer];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -34,14 +38,15 @@ static NSString *const tableViewCellIdentifer = @"tableViewCellIdentifer";
       forCellReuseIdentifier:tableViewCellIdentifer];
     tableView.delegate = self;
     tableView.dataSource = self;
+    tableView.showsVerticalScrollIndicator = NO;
     [self.view addSubview:tableView];
     
     scroll = [[MXImageScrollView alloc] initWithFrame:CGRectMake(0,
                                                                  0,
-                                                                 [UIScreen mainScreen].bounds.size.width,
+                                                                 Screen_Width,
                                                                  scrollViewHeight)
                                         rootTableView:tableView];
-    
+    scroll.delegate = self;
     scroll.images = @[[UIImage imageNamed:@"picture_1"],
                       [UIImage imageNamed:@"picture_2"],
                       [UIImage imageNamed:@"picture_3"]];
@@ -50,7 +55,35 @@ static NSString *const tableViewCellIdentifer = @"tableViewCellIdentifer";
 
 #pragma mark - scrollView delegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+#warning 想拉伸必须实现此方法
     [scroll stretchingSubviews];
+}
+
+#pragma mark - MXScrollView delegate
+- (UIView *)MXScrollView:(MXImageScrollView *)mxScrollView viewForLeftAccessoryViewAtIndex:(NSInteger)index {
+    UIImageView *leftImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10,
+                                                                               scrollViewHeight - 40,
+                                                                               30,
+                                                                               30)];
+    leftImageView.image = [UIImage imageNamed:@"house"];
+    return leftImageView;
+}
+
+- (UIView *)MXScrollView:(MXImageScrollView *)mxScrollView viewForRightAccessoryViewAtIndex:(NSInteger)index {
+    UIImageView *rightImageView = [[UIImageView alloc] initWithFrame:CGRectMake(Screen_Width - 40,
+                                                                                scrollViewHeight - 40,
+                                                                                30,
+                                                                                30)];
+    rightImageView.image = [UIImage imageNamed:@"island"];
+    return rightImageView;
+}
+
+- (UIViewAutoresizing)MXScrollView:(MXImageScrollView *)mxScrollView leftAccessoryViewAutoresizingMaskAtIndex:(NSInteger)index {
+    return UIViewAutoresizingFlexibleTopMargin;
+}
+
+- (UIViewAutoresizing)MXScrollView:(MXImageScrollView *)mxScrollView rightAccessoryViewAutoresizingMaskAtIndex:(NSInteger)index {
+    return UIViewAutoresizingFlexibleTopMargin;
 }
 
 #pragma mark - tableVeiw delegate

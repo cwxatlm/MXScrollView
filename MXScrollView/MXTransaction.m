@@ -14,7 +14,7 @@
 + (CATransition *)defaultTransition {
     CATransition *animation = [CATransition animation];
     animation.duration = kMXAnimotionDuringTime;
-    animation.type = [self getAnimotionType:kMXTransitionPageCurl];
+    animation.type = [self getAnimotionType:kMXTransitionMoveIn];
     animation.subtype = [self getAnimotionDirection:kMXTransitionDirectionFromRight];
     return animation;
 }

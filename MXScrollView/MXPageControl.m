@@ -14,12 +14,14 @@ static CGFloat const kSinglePageIndicatorWidth = 18;
 @interface MXPageControl ()
 
 @property (nonatomic, assign) CGFloat scrollViewWidth;
+@property (nonatomic, assign) CGFloat scrollViewHeight;
 
 @end
 
 @implementation MXPageControl
 
 - (instancetype)initWithFrame:(CGRect)frame
+              superViewHeight:(CGFloat)superViewHeight
                         pages:(NSInteger)pages {
     self = [super initWithFrame:frame];
     if (self) {
@@ -29,22 +31,39 @@ static CGFloat const kSinglePageIndicatorWidth = 18;
         self.currentPageIndicatorTintColor = KDEFAULT_PAGECONTROL_COLOR;
         self.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
         _scrollViewWidth = CGRectGetWidth(frame);
+        _scrollViewHeight = superViewHeight;
     }
     return self;
 }
 
 - (void)setPosition:(kMXPageControlPosition)pisition {
-    CGPoint center = self.center;
-    self.bounds = CGRectMake(0, 0, self.numberOfPages * kSinglePageIndicatorWidth, kMXPageControlHeight);
     switch (pisition) {
-        case kMXPageControlPositionCenter:
-            self.center = CGPointMake(_scrollViewWidth / 2, center.y);
+        case kMXPageControlPositionBottom: {
+            self.frame = CGRectMake(0,
+                                    _scrollViewHeight - kMXPageControlHeight,
+                                    _scrollViewWidth,
+                                    kMXPageControlHeight);
+        }
             break;
-        case kMXPageControlPositionLeft:
-            self.center = CGPointMake(self.bounds.size.width / 2, center.y);
+        case kMXPageControlPositionTop: {
+            self.frame = CGRectMake(0, 0, _scrollViewWidth, kMXPageControlHeight);
+        }
             break;
-        case kMXPageControlPositionRight:
-            self.center = CGPointMake(_scrollViewWidth - self.bounds.size.width / 2, center.y);
+        case kMXPageControlPositionLeft: {
+            self.frame = CGRectMake(- _scrollViewHeight / 2 + kMXPageControlHeight / 2,
+                                    (_scrollViewHeight - kMXPageControlHeight) / 2,
+                                    _scrollViewHeight,
+                                    kMXPageControlHeight);
+            self.transform = CGAffineTransformMakeRotation(M_PI_2);
+        }
+            break;
+        case kMXPageControlPositionRight: {
+            self.frame = CGRectMake(_scrollViewWidth - _scrollViewHeight / 2 - kMXPageControlHeight / 2,
+                                    (_scrollViewHeight - kMXPageControlHeight) / 2,
+                                    _scrollViewHeight,
+                                    kMXPageControlHeight);
+            self.transform = CGAffineTransformMakeRotation(M_PI_2);
+        }
             break;
         default:
             break;

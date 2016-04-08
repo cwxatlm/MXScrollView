@@ -21,6 +21,11 @@ static CGFloat const scrollViewHeight = 200;
 
 @implementation EasyUseViewController
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [scroll invalidateTimer];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -30,11 +35,27 @@ static CGFloat const scrollViewHeight = 200;
                                                                  scrollViewHeight,
                                                                  scrollViewWidth,
                                                                  scrollViewHeight)];
-    scroll.images = @[[UIImage imageNamed:@"picture_one"],
-                      [UIImage imageNamed:@"picture_two"],
-                      [UIImage imageNamed:@"picture_three"]];
+    scroll.images = @[[UIImage imageNamed:@"picture_1"],
+                      [UIImage imageNamed:@"picture_2"],
+                      [UIImage imageNamed:@"picture_3"]];
+    [scroll setTapImageHandle:^(NSInteger index) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                            message:[NSString
+                                                                     stringWithFormat:@"你点击了%ld张图片", index]
+                                                           delegate:nil
+                                                  cancelButtonTitle:nil
+                                                  otherButtonTitles:@"Ok", nil];
+        [alertView show];
+    }];
+    
+    [scroll setDidScrollImageViewAtIndexHandle:^(NSInteger index) {
+        NSLog(@"滑动到了第%ld页", index);
+    }];
+    
     [self.view addSubview:scroll];
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -22,16 +22,28 @@ typedef NS_ENUM(NSInteger, kMXScrollViewDirection) {
     kMXScrollViewDirectionVertical
 };
 
+//竖直滚动方向
+typedef NS_ENUM(NSInteger, kMXVerticalDirection) {
+    /**
+     * 从上到下
+     */
+    kMXVerticalDirectionFromTop,
+    /**
+     *  从下到上
+     */
+    kMXVerticalDirectionFromBottom
+};
+
 //特效类型
 typedef NS_ENUM(NSInteger, kMXTransitionType) {
     /**
      *  交叉淡化过渡
      */
-    kMXTransitionMoveIn,
+    kMXTransitionFade,
     /**
      *  新视图移到旧视图上面
      */
-    kMXTransitionFade,
+    kMXTransitionMoveIn,
     /**
      *  新视图把旧视图推出去
      */
@@ -97,9 +109,13 @@ typedef NS_ENUM(NSInteger, kMXTransitionDirection) {
 //pageControl位置
 typedef NS_ENUM(NSInteger, kMXPageControlPosition) {
     /**
-     *  中间
+     *  上面
      */
-    kMXPageControlPositionCenter,
+    kMXPageControlPositionTop,
+    /**
+     *  下面
+     */
+    kMXPageControlPositionBottom,
     /**
      *  左边
      */
@@ -108,22 +124,6 @@ typedef NS_ENUM(NSInteger, kMXPageControlPosition) {
      *  右边
      */
     kMXPageControlPositionRight,
-};
-
-//pageControl位置
-typedef NS_ENUM(NSInteger, kMXScrollViewType) {
-    /**
-     *  图片类型
-     */
-    kMXScrollViewTypeImageView,
-    /**
-     *  标签类型
-     */
-    kMXScrollViewTypeLabel,
-    /**
-     *  自定义类型
-     */
-    kMXScrollViewTypeCustom,
 };
 
 #endif /* MXScrollHeader_h */

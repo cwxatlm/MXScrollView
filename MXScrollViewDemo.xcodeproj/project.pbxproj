@@ -38,19 +38,19 @@
 		18AA202E1CB6059A00C6C6F4 /* picture_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 18AA202D1CB6059A00C6C6F4 /* picture_1.png */; };
 		18AA20301CB6059F00C6C6F4 /* picture_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 18AA202F1CB6059F00C6C6F4 /* picture_2.png */; };
 		18AA20321CB605A400C6C6F4 /* picture_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 18AA20311CB605A400C6C6F4 /* picture_3.png */; };
+		18AA20351CB609F500C6C6F4 /* VerticalUseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AA20341CB609F500C6C6F4 /* VerticalUseViewController.m */; };
+		18AA20381CB645BA00C6C6F4 /* AnimationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AA20371CB645BA00C6C6F4 /* AnimationViewController.m */; };
 		18DFA1031CB36BD9001707F1 /* MXTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DFA1021CB36BD9001707F1 /* MXTransaction.m */; };
 		18DFA1041CB36CAE001707F1 /* MXTransaction.h in Headers */ = {isa = PBXBuildFile; fileRef = 18DFA1011CB36BD9001707F1 /* MXTransaction.h */; };
 		18DFA1051CB36CB7001707F1 /* MXTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DFA1021CB36BD9001707F1 /* MXTransaction.m */; };
 		18DFA10B1CB3704F001707F1 /* EasyUseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DFA10A1CB3704F001707F1 /* EasyUseViewController.m */; };
-		18DFA10C1CB37175001707F1 /* MXImageScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = 18FC81A31CB355C800DB95D7 /* MXImageScrollView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		18DFA10D1CB37189001707F1 /* MXImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FC81A41CB355C800DB95D7 /* MXImageScrollView.m */; };
-		18DFA10E1CB37192001707F1 /* MXBaseScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FC81A81CB3639700DB95D7 /* MXBaseScrollView.m */; };
+		18DFA10E1CB37192001707F1 /* MXImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FC81A81CB3639700DB95D7 /* MXImageScrollView.m */; };
 		18DFA1111CB3756D001707F1 /* TableUseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DFA1101CB3756D001707F1 /* TableUseViewController.m */; };
 		18F1C9A21CA4F341000A9601 /* MXScrollView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F1C98D1CA4F341000A9601 /* MXScrollView.framework */; };
 		18F1C9A31CA4F341000A9601 /* MXScrollView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 18F1C98D1CA4F341000A9601 /* MXScrollView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		18F1C9AB1CA4F3D9000A9601 /* MXScrollView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 159C2B3B1C7DF3520034292D /* MXScrollView.bundle */; };
 		18F1C9AD1CA4F40C000A9601 /* MXEnumHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 152B78E21CA41F6C004281A4 /* MXEnumHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		18F1C9AE1CA4F40C000A9601 /* MXBaseScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = 15E561AB1C7CA68200195642 /* MXBaseScrollView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		18F1C9AE1CA4F40C000A9601 /* MXImageScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = 15E561AB1C7CA68200195642 /* MXImageScrollView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		18F1C9AF1CA4F43C000A9601 /* MXScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = 152B78E01CA41F6C004281A4 /* MXScrollView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		18F1C9B01CA4F43C000A9601 /* MXImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 152B791E1CA42052004281A4 /* MXImageView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		18F1C9B11CA4F43C000A9601 /* MXPageControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 152B78E41CA41F6D004281A4 /* MXPageControl.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -91,8 +91,7 @@
 		18F1C9D81CA4F469000A9601 /* UIImageView+CMHighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 152B79081CA41FD5004281A4 /* UIImageView+CMHighlightedWebCache.m */; };
 		18F1C9D91CA4F469000A9601 /* UIImageView+CMWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 152B790A1CA41FD5004281A4 /* UIImageView+CMWebCache.m */; };
 		18F1C9DA1CA4F469000A9601 /* UIView+CMWebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 152B790C1CA41FD5004281A4 /* UIView+CMWebCacheOperation.m */; };
-		18FC81A51CB355C800DB95D7 /* MXImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FC81A41CB355C800DB95D7 /* MXImageScrollView.m */; };
-		18FC81A91CB3639700DB95D7 /* MXBaseScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FC81A81CB3639700DB95D7 /* MXBaseScrollView.m */; };
+		18FC81A91CB3639700DB95D7 /* MXImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FC81A81CB3639700DB95D7 /* MXImageScrollView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -172,12 +171,16 @@
 		15E5617D1C7CA44E00195642 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		15E561A71C7CA64200195642 /* demo1GIF.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = demo1GIF.gif; sourceTree = "<group>"; };
 		15E561A81C7CA64200195642 /* demo2GIF.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = demo2GIF.gif; sourceTree = "<group>"; };
-		15E561AB1C7CA68200195642 /* MXBaseScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXBaseScrollView.h; sourceTree = "<group>"; };
+		15E561AB1C7CA68200195642 /* MXImageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXImageScrollView.h; sourceTree = "<group>"; };
 		15E561AE1C7CA6A700195642 /* MXScrollConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXScrollConst.h; sourceTree = "<group>"; };
 		15E561AF1C7CA6A700195642 /* MXScrollConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXScrollConst.m; sourceTree = "<group>"; };
 		18AA202D1CB6059A00C6C6F4 /* picture_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = picture_1.png; sourceTree = "<group>"; };
 		18AA202F1CB6059F00C6C6F4 /* picture_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = picture_2.png; sourceTree = "<group>"; };
 		18AA20311CB605A400C6C6F4 /* picture_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = picture_3.png; sourceTree = "<group>"; };
+		18AA20331CB609F500C6C6F4 /* VerticalUseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerticalUseViewController.h; sourceTree = "<group>"; };
+		18AA20341CB609F500C6C6F4 /* VerticalUseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerticalUseViewController.m; sourceTree = "<group>"; };
+		18AA20361CB645BA00C6C6F4 /* AnimationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationViewController.h; sourceTree = "<group>"; };
+		18AA20371CB645BA00C6C6F4 /* AnimationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationViewController.m; sourceTree = "<group>"; };
 		18DFA1011CB36BD9001707F1 /* MXTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXTransaction.h; sourceTree = "<group>"; };
 		18DFA1021CB36BD9001707F1 /* MXTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXTransaction.m; sourceTree = "<group>"; };
 		18DFA1091CB3704F001707F1 /* EasyUseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyUseViewController.h; sourceTree = "<group>"; };
@@ -186,9 +189,7 @@
 		18DFA1101CB3756D001707F1 /* TableUseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableUseViewController.m; sourceTree = "<group>"; };
 		18F1C98D1CA4F341000A9601 /* MXScrollView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MXScrollView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		18F1C9911CA4F341000A9601 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		18FC81A31CB355C800DB95D7 /* MXImageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXImageScrollView.h; sourceTree = "<group>"; };
-		18FC81A41CB355C800DB95D7 /* MXImageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXImageScrollView.m; sourceTree = "<group>"; };
-		18FC81A81CB3639700DB95D7 /* MXBaseScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXBaseScrollView.m; sourceTree = "<group>"; };
+		18FC81A81CB3639700DB95D7 /* MXImageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXImageScrollView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -281,6 +282,10 @@
 				18DFA10A1CB3704F001707F1 /* EasyUseViewController.m */,
 				18DFA10F1CB3756D001707F1 /* TableUseViewController.h */,
 				18DFA1101CB3756D001707F1 /* TableUseViewController.m */,
+				18AA20331CB609F500C6C6F4 /* VerticalUseViewController.h */,
+				18AA20341CB609F500C6C6F4 /* VerticalUseViewController.m */,
+				18AA20361CB645BA00C6C6F4 /* AnimationViewController.h */,
+				18AA20371CB645BA00C6C6F4 /* AnimationViewController.m */,
 				15E561751C7CA44E00195642 /* Main.storyboard */,
 				15E561781C7CA44E00195642 /* Assets.xcassets */,
 				15E5617A1C7CA44E00195642 /* LaunchScreen.storyboard */,
@@ -303,10 +308,8 @@
 			children = (
 				152B78E01CA41F6C004281A4 /* MXScrollView.h */,
 				152B78E21CA41F6C004281A4 /* MXEnumHeader.h */,
-				15E561AB1C7CA68200195642 /* MXBaseScrollView.h */,
-				18FC81A81CB3639700DB95D7 /* MXBaseScrollView.m */,
-				18FC81A31CB355C800DB95D7 /* MXImageScrollView.h */,
-				18FC81A41CB355C800DB95D7 /* MXImageScrollView.m */,
+				15E561AB1C7CA68200195642 /* MXImageScrollView.h */,
+				18FC81A81CB3639700DB95D7 /* MXImageScrollView.m */,
 				152B791E1CA42052004281A4 /* MXImageView.h */,
 				152B78E31CA41F6D004281A4 /* MXImageView.m */,
 				152B78E41CA41F6D004281A4 /* MXPageControl.h */,
@@ -348,11 +351,10 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18F1C9AE1CA4F40C000A9601 /* MXBaseScrollView.h in Headers */,
+				18F1C9AE1CA4F40C000A9601 /* MXImageScrollView.h in Headers */,
 				18F1C9B11CA4F43C000A9601 /* MXPageControl.h in Headers */,
 				18F1C9AD1CA4F40C000A9601 /* MXEnumHeader.h in Headers */,
 				18F1C9AF1CA4F43C000A9601 /* MXScrollView.h in Headers */,
-				18DFA10C1CB37175001707F1 /* MXImageScrollView.h in Headers */,
 				18F1C9B01CA4F43C000A9601 /* MXImageView.h in Headers */,
 				18DFA1041CB36CAE001707F1 /* MXTransaction.h in Headers */,
 				18F1C9B21CA4F43D000A9601 /* MXScrollConst.h in Headers */,
@@ -484,6 +486,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18AA20351CB609F500C6C6F4 /* VerticalUseViewController.m in Sources */,
 				152B79151CA41FD5004281A4 /* NSData+CMImageContentType.m in Sources */,
 				152B791C1CA41FD5004281A4 /* UIImageView+CMWebCache.m in Sources */,
 				152B791B1CA41FD5004281A4 /* UIImageView+CMHighlightedWebCache.m in Sources */,
@@ -492,11 +495,11 @@
 				15E561741C7CA44E00195642 /* ViewController.m in Sources */,
 				152B79121CA41FD5004281A4 /* CMSDWebImageManager.m in Sources */,
 				152B79131CA41FD5004281A4 /* CMSDWebImagePrefetcher.m in Sources */,
-				18FC81A51CB355C800DB95D7 /* MXImageScrollView.m in Sources */,
+				18AA20381CB645BA00C6C6F4 /* AnimationViewController.m in Sources */,
 				15E561711C7CA44E00195642 /* AppDelegate.m in Sources */,
 				152B790E1CA41FD5004281A4 /* CMSDWebImageCompat.m in Sources */,
 				152B78E91CA41F6D004281A4 /* MXPageControl.m in Sources */,
-				18FC81A91CB3639700DB95D7 /* MXBaseScrollView.m in Sources */,
+				18FC81A91CB3639700DB95D7 /* MXImageScrollView.m in Sources */,
 				152B78E81CA41F6D004281A4 /* MXImageView.m in Sources */,
 				152B790D1CA41FD5004281A4 /* CMSDImageCache.m in Sources */,
 				152B79101CA41FD5004281A4 /* CMSDWebImageDownloader.m in Sources */,
@@ -518,8 +521,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18DFA10E1CB37192001707F1 /* MXBaseScrollView.m in Sources */,
-				18DFA10D1CB37189001707F1 /* MXImageScrollView.m in Sources */,
+				18DFA10E1CB37192001707F1 /* MXImageScrollView.m in Sources */,
 				18DFA1051CB36CB7001707F1 /* MXTransaction.m in Sources */,
 				18F1C9C71CA4F468000A9601 /* MXImageView.m in Sources */,
 				18F1C9C81CA4F469000A9601 /* MXPageControl.m in Sources */,
