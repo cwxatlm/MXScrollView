@@ -9,8 +9,6 @@
 #import "MXPageControl.h"
 #import "MXScrollConst.h"
 
-static CGFloat const kSinglePageIndicatorWidth = 18;
-
 @interface MXPageControl ()
 
 @property (nonatomic, assign) CGFloat scrollViewWidth;
