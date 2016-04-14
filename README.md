@@ -9,9 +9,9 @@ The use of a simple with the effects of the rolling cycle view
 ![demo](Pictures/gif_one.gif)
 ![demo](Pictures/gif_two.gif)
 
-版本1.2.2 
+版本1.2.3 
 ----
-  1.2.2 版本,大部分代码重构,增加更多功能.图片加载使用的成熟开源框架SDWebImage.
+  1.2.3 增加支持竖直滚动 //support Vertical scroll
 
 
 使用  How to Use it
