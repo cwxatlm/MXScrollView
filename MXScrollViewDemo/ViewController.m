@@ -7,8 +7,10 @@
 //
 
 #import "ViewController.h"
-#import "NormalScrollViewController.h"
-#import "TableScrollViewController.h"
+#import "EasyUseViewController.h"
+#import "TableUseViewController.h"
+#import "VerticalUseViewController.h"
+#import "AnimationViewController.h"
 
 static NSString *const tableIdentifier = @"TableViewCell";
 
@@ -42,18 +44,26 @@ static NSString *const tableIdentifier = @"TableViewCell";
 
 #pragma mark - tabelView delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:tableIdentifier forIndexPath:indexPath];
     switch (indexPath.row) {
         case 0: {
-            cell.textLabel.text = @"NormolScrollDemonstration";
+            cell.textLabel.text = @"EasyUseViewController";
         }
             break;
         case 1: {
-            cell.textLabel.text = @"tableScrollDemonstration";
+            cell.textLabel.text = @"TableUseViewController";
+        }
+            break;
+        case 2: {
+            cell.textLabel.text = @"VerticalUseViewController";
+        }
+            break;
+        case 3: {
+            cell.textLabel.text = @"AnimationViewController";
         }
             break;
         default:
@@ -66,11 +76,19 @@ static NSString *const tableIdentifier = @"TableViewCell";
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     switch (indexPath.row) {
         case 0: {
-            [self.navigationController pushViewController:[[NormalScrollViewController alloc] init] animated:YES];
+            [self.navigationController pushViewController:[[EasyUseViewController alloc] init] animated:YES];
         }
             break;
         case 1: {
-            [self.navigationController pushViewController:[[TableScrollViewController alloc] init] animated:YES];
+            [self.navigationController pushViewController:[[TableUseViewController alloc] init] animated:YES];
+        }
+            break;
+        case 2: {
+            [self.navigationController pushViewController:[[VerticalUseViewController alloc] init] animated:YES];
+        }
+            break;
+        case 3: {
+            [self.navigationController pushViewController:[[AnimationViewController alloc] init] animated:YES];
         }
             break;
         default:

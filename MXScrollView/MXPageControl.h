@@ -7,14 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MXEnmuHeader.h"
+#import "MXEnumHeader.h"
 
 @interface MXPageControl : UIPageControl
 
-@property (nonatomic, strong) UIView *bottonLine;//底部黑色半透明背景条
-
 - (instancetype)initWithFrame:(CGRect)frame
-              superViewHeight:(CGFloat)height
+              superViewHeight:(CGFloat)superViewHeight
                         pages:(NSInteger)pages;
 
 - (void)setPosition:(kMXPageControlPosition)pisition;

@@ -9,9 +9,9 @@ The use of a simple with the effects of the rolling cycle view
 ![demo](Pictures/demo1GIF.gif)
 ![demo](Pictures/demo2GIF.gif)
 
-版本1.2.1 
+版本1.2.2 
 ----
-  1.2.1 版本,大部分代码重构,现在看上去更舒服,功能也更强大,对用旧版本的朋友致歉,因为有些地方没有对旧版本进行兼容.图片加载使用的成熟开源框架SDWebImage.
+  1.2.2 版本,大部分代码重构,增加更多功能.图片加载使用的成熟开源框架SDWebImage.
 
 
 使用  How to Use it
@@ -51,6 +51,8 @@ github "cwxatlm/MXScrollView"
 
 导入头文件 
  `#import <MXScrollView/MXScrollView.h>`
+
+想对Carthage了解更多也可以看这里[让自己的项目支持Carthage](http://www.jianshu.com/p/bf263c596538)
 
 ### Manually  手动导入
 * Drag the `MXScrollView` folder into your project.  把`MXScrollView`文件夹拖入工程
