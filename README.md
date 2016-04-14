@@ -6,8 +6,8 @@ The use of a simple with the effects of the rolling cycle view
 -----
 
 
-![demo](Pictures/demo1GIF.gif)
-![demo](Pictures/demo2GIF.gif)
+![demo](Pictures/gif_one.gif)
+![demo](Pictures/git_two.gif)
 
 版本1.2.2 
 ----
@@ -65,7 +65,7 @@ github "cwxatlm/MXScrollView"
 
 ####Objective-C
 ```objective-c
-MXScrollView *scroll = [[MXScrollView alloc] initWithFrame:CGRectMake(x, y, scrollWidth, scrollHeight)];
+MXImageScrollView *scroll = [[MXIMageScrollView alloc] initWithFrame:CGRectMake(x, y, scrollWidth, scrollHeight)];
         //数组支持传入image或imageUrl       support image or imageUrl
 scroll.images =  @[
                   [UIImage imageNamed:@"picture_one"],
@@ -93,7 +93,7 @@ scroll.animotionDirection = kMXTransitionDirectionRandom; //支持多方向 supp
 
 ####Objective-C
 ```objective-c
-_scroll = [[MXScrollView alloc] initWithFrame:CGRectMake(0,
+_scroll = [[MXImageScrollView alloc] initWithFrame:CGRectMake(0,
                                                          0,
                                                          CGRectGetWidth(self.view.bounds),
                                                          MXScrollViewHeight)
