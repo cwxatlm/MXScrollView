@@ -7,7 +7,7 @@ The use of a simple with the effects of the rolling cycle view
 
 
 ![demo](Pictures/gif_one.gif)
-![demo](Pictures/git_two.gif)
+![demo](Pictures/gif_two.gif)
 
 版本1.2.2 
 ----
