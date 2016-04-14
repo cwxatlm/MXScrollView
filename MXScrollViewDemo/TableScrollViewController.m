@@ -65,6 +65,7 @@ static CGFloat   const MXScrollViewHeight = 175.0f;
                         [UIImage imageNamed:@"picture_three"],
                         @"http://pic31.nipic.com/20130624/8821914_104949466000_2.jpg"
                         ];
+    _scroll.scrollIntervalTime = 6;
     [_scroll setTapImageHandle:^(NSInteger index) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
                                                         message:[NSString stringWithFormat:@"你点击了第%ld张图片", index]
